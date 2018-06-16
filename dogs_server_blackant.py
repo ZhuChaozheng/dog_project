@@ -100,14 +100,14 @@ def slice_data(r):
     ridar_int = ridar_int
   else:
     ridar_int = -ridar_int
-  print('ridar', ridar_int)
+  #print('ridar', ridar_int)
   sensor_data.append(ridar_int)
   sensors_data['ridar'] = ridar_int
   threadLock.acquire()
   all_sensors_data = sensors_data.copy()
   #print(all_sensors_data)
   threadLock.release()
-  print('sensor_data', sensor_data)
+  #print('sensor_data', sensor_data)
   return sensor_data
 
 
@@ -134,26 +134,25 @@ def data_validation(sensor_data):
     last_sensor_data = current_sensor_data
     return False
   # validate data in the range of 10%
-  print(offset_angle(last_sensor_data[0], current_sensor_data[0]))
   if (offset_angle(last_sensor_data[0], current_sensor_data[0]) > 10):
-    print('error 1')
+  #  print('error 1')
     last_sensor_data = current_sensor_data
     return False
   if (offset_angle(last_sensor_data[1], current_sensor_data[1]) > 10):
-    print('error 2')
+  #  print('error 2')
     last_sensor_data = current_sensor_data
     return False
     # height need particularly handle, as its range isn't 0~180,-0~-180
   if (math.fabs(last_sensor_data[2]) - 30 > math.fabs(current_sensor_data[2]) or math.fabs(current_sensor_data[2]) > math.fabs(last_sensor_data[2]) + 30):
-    print('error 3')
+  #  print('error 3')
     last_sensor_data = current_sensor_data
     return False
-  print('data_validation true')
+ # print('data_validation true')
   return True
 
 # initial system, command dog to stand up until it return 10 sets valid data
 def initial_system(sensor_data):
-  print('initial', sensor_data)
+ # print('initial', sensor_data)
   global num
   if (data_validation(sensor_data)):
     num = num + 1
@@ -161,7 +160,7 @@ def initial_system(sensor_data):
     num = 0
   # finish initial system, predictions is 3, or predictions is 4
   global predictions_data
-  print('num', num)
+  #print('num', num)
   if (num > 5):
     predictions_data = 3
     return True
@@ -170,8 +169,8 @@ def initial_system(sensor_data):
     return False
 
 def predictions_decision_tree(sensor_data):
-  print('decision', sensor_data)
-  print('current', current_sensor_data)  # precise data for dog stand up, after intial, it will not be updated
+ # print('decision', sensor_data)
+ # print('current', current_sensor_data)  # precise data for dog stand up, after intial, it will not be updated
   global all_sensors_data
   global web_sensors_data
   global predictions_data
@@ -182,17 +181,28 @@ def predictions_decision_tree(sensor_data):
     if (initial_system(sensor_data)):
       flag = 1
       print('initial finished')
+      print(current_sensor_data)
   else:
       # height need particularly handle, as its range isn't 0~180,-0~-180
-    if ((math.fabs(sensor_data[2]) < math.fabs(current_sensor_data[2]) - 100) and (offset_angle(sensor_data[0], current_sensor_data[0]) < 10 or (offset_angle(sensor_data[1], current_sensor_data[1]) < 10))):
-# lay
-      predictions_data = 0
-    if ((offset_angle(sensor_data[0], current_sensor_data[0]) > 20) or (offset_angle(sensor_data[0], current_sensor_data[0]) > 20)):
+    #if (((math.fabs(sensor_data[2]) < math.fabs(current_sensor_data[2]) - 100) and (offset_angle(sensor_data[0], current_sensor_data[0]) < 10 or (offset_angle(sensor_data[1], current_sensor_data[1]) < 10))) or (math.fabs(sensor_data[2]) < 100)):
+    if (math.fabs(sensor_data[2]) < 100):
+      if ((offset_angle(sensor_data[0], current_sensor_data[0]) > 20) or (offset_angle(sensor_data[1], current_sensor_data[1]) > 20)):
+        print('2')
 # down
-      predictions_data = 2
-    if ((offset_angle(sensor_data[0], current_sensor_data[0]) < 20) or (offset_angle(sensor_data[0], current_sensor_data[0]) < 20)):
+        predictions_data = 2
+      else:
+        print('0')
+# lay
+        predictions_data = 0
+    else:
+      if ((offset_angle(sensor_data[0], current_sensor_data[0]) < 20) or (offset_angle(sensor_data[1], current_sensor_data[1]) < 20)):
 # up
-      predictions_data = 1
+        print('1')
+        predictions_data = 1
+      else:
+        print('2')
+# down
+        predictions_data = 2
 
     threadLock.acquire()
     all_sensors_data['predictions'] = predictions_data
@@ -212,16 +222,17 @@ def web_server(threadName, delay):
   server = socket.socket()
   host_server = '0.0.0.0'
   port_server = 12342
+  server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
   server.bind((host_server, port_server))
   server.listen(5)
 #  predictions = [1]
 #  global web_isensors_data
   while True:
     c, addr = server.accept()
-    print('web', addr)
+    #print('web', addr)
     try:
 #      print('web', web_sensors_data)
-      print('web', predictions_data)
+  #    print('web', predictions_data)
       a = pickle.dumps(web_sensors_data)
       c.send(a)
       c.close()
@@ -236,6 +247,7 @@ def tcp_server(threadName, delay):
   s = socket.socket()
   host = '0.0.0.0'
   port = 12343
+  s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
   s.bind((host,port))
   s.listen(5)
   # start dnn
