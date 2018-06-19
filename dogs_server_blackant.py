@@ -12,16 +12,38 @@ import urllib
 import serial
 import socket
 import threading
+import pymysql
+import datetime
 
-flag = 0
+flag = 0  # for initial system
+flag_database = 0 # for database thread
 all_sensors_data = {'yaw_one':0, 'pitch_one':2.3, 'roll_one':0, 'yaw_two':0, 'pitch_two':2.91, 'roll_two':0, 'ridar':0, 'predictions':2}
 threadLock = threading.Lock()
 sensors_data = {'yaw_one':0, 'pitch_one':0, 'roll_one':0, 'yaw_two':0, 'pitch_two':0, 'roll_two':0, 'ridar':0, 'predictions':0}
+# contrast with twice web_sensors_data
 web_sensors_data = {'yaw_one':0, 'pitch_one':0, 'roll_one':0, 'yaw_two':0, 'pitch_two':0, 'roll_two':0, 'ridar':0, 'predictions':0}
+last_web_sensors_data = {'yaw_one':0, 'pitch_one':0, 'roll_one':0, 'yaw_two':0, 'pitch_two':0, 'roll_two':0, 'ridar':0, 'predictions':0}
+
 num = 0  # valid data sets number
+# contrast with twice sensor_data [pitch_one, pitch_two, height]
 current_sensor_data = [0, 0, 0]
 last_sensor_data = [0, 0, 0]
-predictions_data = 0
+
+# set predictions_data = 5, represent disconnect
+predictions_data = 5
+# cmp comprise two dict
+def cmp_dict(src_data,dst_data):   
+  sum_v_d = 0
+  sum_v_d1 = 0
+  for value in src_data.values():
+    sum_v_d = value + sum_v_d
+  for value in dst_data.values():
+    sum_v_d1 = value + sum_v_d1
+  if (sum_v_d == sum_v_d1):
+    return 0
+  return 1
+
+
 
 # this method is used to obtain type int data for each data
 def slice_data(r):
@@ -111,7 +133,6 @@ def slice_data(r):
   return sensor_data
 
 
-
 # angle1 is 0~180, -180~-0, angle2 is 0~180, -180~-0
 def offset_angle(angle1, angle2):
   if (math.fabs(angle1 - angle2) > 180):
@@ -152,8 +173,41 @@ def data_validation(sensor_data):
 
 # initial system, command dog to stand up until it return 10 sets valid data
 def initial_system(sensor_data):
- # print('initial', sensor_data)
   global num
+  global last_sensor_data
+
+  last_sensor_data = current_sensor_data
+
+  # Data validation: floating between two sets of data does not exceed 10%, if it is right, return true, else return false
+  def data_validation(sensor_data):
+      # print('data_validation', sensor_data)
+      global current_sensor_data
+      global last_sensor_data
+      current_sensor_data = sensor_data
+      # print('last_sensor_data', last_sensor_data)
+      # print('current_sensor_data', current_sensor_data)
+      # assign an initial value to last_sensor_data, when it is the first
+      # if (last_sensor_data[0] == 0 and last_sensor_data[1] == 0 and last_sensor_data[2] == 0):
+      #     last_sensor_data = current_sensor_data
+      #     return False
+      # validate data in the range of 10%
+      if (offset_angle(last_sensor_data[0], current_sensor_data[0]) > 10):
+          #  print('error 1')
+          last_sensor_data = current_sensor_data
+          return False
+      if (offset_angle(last_sensor_data[1], current_sensor_data[1]) > 10):
+          #  print('error 2')
+          last_sensor_data = current_sensor_data
+          return False
+          # height need particularly handle, as its range isn't 0~180,-0~-180
+      if (math.fabs(last_sensor_data[2]) - 30 > math.fabs(current_sensor_data[2]) or math.fabs(
+              current_sensor_data[2]) > math.fabs(last_sensor_data[2]) + 30):
+          #  print('error 3')
+          last_sensor_data = current_sensor_data
+          return False
+      # print('data_validation true')
+      return True
+
   if (data_validation(sensor_data)):
     num = num + 1
   else:
@@ -167,6 +221,7 @@ def initial_system(sensor_data):
   else:
     predictions_data = 4
     return False
+
 
 def predictions_decision_tree(sensor_data):
  # print('decision', sensor_data)
@@ -187,20 +242,20 @@ def predictions_decision_tree(sensor_data):
     #if (((math.fabs(sensor_data[2]) < math.fabs(current_sensor_data[2]) - 100) and (offset_angle(sensor_data[0], current_sensor_data[0]) < 10 or (offset_angle(sensor_data[1], current_sensor_data[1]) < 10))) or (math.fabs(sensor_data[2]) < 100)):
     if (math.fabs(sensor_data[2]) < 100):
       if ((offset_angle(sensor_data[0], current_sensor_data[0]) > 20) or (offset_angle(sensor_data[1], current_sensor_data[1]) > 20)):
-        print('2')
+      #  print('2')
 # down
         predictions_data = 2
       else:
-        print('0')
+      #  print('0')
 # lay
         predictions_data = 0
     else:
       if ((offset_angle(sensor_data[0], current_sensor_data[0]) < 20) or (offset_angle(sensor_data[1], current_sensor_data[1]) < 20)):
 # up
-        print('1')
+     #   print('1')
         predictions_data = 1
       else:
-        print('2')
+    #    print('2')
 # down
         predictions_data = 2
 
@@ -217,7 +272,7 @@ def predictions_decision_tree(sensor_data):
   web_sensors_data = all_sensors_data.copy()
 
 
-def web_server(threadName, delay):
+def web_server():
   # client server
   server = socket.socket()
   host_server = '0.0.0.0'
@@ -229,7 +284,7 @@ def web_server(threadName, delay):
 #  global web_isensors_data
   while True:
     c, addr = server.accept()
-    #print('web', addr)
+  #  print('web', addr)
     try:
 #      print('web', web_sensors_data)
   #    print('web', predictions_data)
@@ -242,7 +297,7 @@ def web_server(threadName, delay):
   server.close()
 
 
-def tcp_server(threadName, delay):
+def tcp_server():
 #  print('tcp')
   s = socket.socket()
   host = '0.0.0.0'
@@ -254,13 +309,20 @@ def tcp_server(threadName, delay):
 #  global all_sensors_data
 #  all_sensors_data = {'yaw_one':0, 'pitch_one':0, 'roll_one':0, 'yaw_two':0, 'pitch_two':0, 'roll_two':0, 'ridar':0, 'predictions':0}
 #  predictions_motion()
+  global predictions_data
   while True:
       c, addr = s.accept()
-      print ('111',addr)
+      print('111', addr)
+      # set predictions_data = 4, represent connect
+      predictions_data = 4
+
       while True:
           client_data = c.recv(1024)
           if not client_data:
               print('disconnect')
+
+              # set predictions_data = 5, represent disconnect
+              predictions_data = 5
               break
 #          print(client_data)
 #          pickle_data = client_data.split('.')
@@ -280,14 +342,61 @@ def tcp_server(threadName, delay):
       #        flag = 1
       #        break
       c.close()
+
+def diff_web_sensors_data():
+  global flag_database
+  last_web_sensors_data = web_sensors_data
+  while (True):
+      if (cmp_dict(web_sensors_data, last_web_sensors_data) == 0):
+        flag_database = 0
+      else:
+        flag_database = 1
+      last_web_sensors_data = web_sensors_data
+      time.sleep(0.5)
+
+
+def mysql_server():
+
+  # open database
+  db = pymysql.connect("localhost","root","123","dog_project" )
+
+  # use function cursor() build a object cursor
+  cursor = db.cursor()
+  while True:
+ 
+    while (flag_database):
+      dt=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+      # SQL insert sentence
+      sql = "INSERT INTO dog_tbl (dog_name, yaw_one, \
+      yaw_two, pitch_one, pitch_two, roll_one, \
+      roll_two, height, time) \
+      VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" % \
+      ('p001', web_sensors_data['yaw_one'], web_sensors_data['yaw_two'], web_sensors_data['pitch_one'],
+      web_sensors_data['pitch_two'], web_sensors_data['roll_one'], web_sensors_data['roll_two'],
+      web_sensors_data['ridar'], dt)
+
+      try:
+         # execute sql sentence
+         cursor.execute(sql)
+
+         db.commit()
+      except:
+         # if occur errors, then rollback
+         db.rollback()
+      time.sleep(1)
+
+  db.close()
+
 # as a tcp server receive the data of dog police pose, also as a web client, send the results of pose
 def main():
-
   try:
-    t1 = threading.Thread(target=web_server, args=('Thread-1', 2, ))
-    t2 = threading.Thread(target=tcp_server, args=('Thread-2', 3, ))
+    t1 = threading.Thread(target=web_server)
+    t2 = threading.Thread(target=tcp_server)
+    t3 = threading.Thread(target=mysql_server)
     t1.start()
     t2.start()
+    t3.start()
+    diff_web_sensors_data()
   except:
     print('Error: unable to start thread')
   while 1:
