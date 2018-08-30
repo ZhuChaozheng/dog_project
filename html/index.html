@@ -109,7 +109,7 @@
         $.getJSON('/htbin/count.py', function(result) {
             current_data_yaw_one = result.pitch_one;
             current_data_yaw_two = result.pitch_two;
-            current_data_ridar = result.ridar;
+            current_data_ridar = result.height;
             predictions = result.predictions;
 
         if (predictions == "0")
