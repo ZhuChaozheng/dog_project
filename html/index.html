@@ -71,7 +71,7 @@
   </div>
 
   <div id="video">
-    <iframe src='http://server.blackant.org:4201/video.html' width='100%' height='100%' frameborder=0> </iframe> 
+    <iframe src='http://server.blackant.org:4201/video.html' width='100%' height='100%' frameborder=0> </iframe>
   </div>
 </div>
 
@@ -106,29 +106,53 @@
         now = [seconds.getHours(), seconds.getMinutes(), seconds.getSeconds()].join(':');
         dateList.push(now);
 
+        // $("#imgId").attr('src', 'img/run.gif');
+
         $.getJSON('/htbin/count.py', function(result) {
             current_data_yaw_one = result.pitch_one;
             current_data_yaw_two = result.pitch_two;
             current_data_ridar = result.height;
             predictions = result.predictions;
 
-        if (predictions == "0")
-          $("#imgId").attr('src', 'img/lay.png');
-        else if (predictions == "2")
-          $("#imgId").attr('src', 'img/down.png');
-        else if (predictions == "1")
-          $("#imgId").attr('src', 'img/up.png');
-        else if (predictions == "3")
-	  // initial finished
-          $("#imgId").attr('src', 'img/finished.jpg');
-        else if (predictions == "4")
-          // initialing
-          $("#imgId").attr('src', 'img/initial.jpg');
-        else if (predictions == '5')
-            // disconnected
-          $("#imgId").attr('src', 'img/initial.jpg');
-         
+            /*
+            * explain the variable of predictions
+            * 0: lay
+            * 1: up
+            * 2: down
+            * 3: initialing
+            * 4: finished
+            * 5: disconnected, so show as initialing
+            * 6: run
+            */
 
+            switch (predictions) {
+              case "0":
+                $("#imgId").attr('src', 'img/lay.png');
+                break;
+              case "1":
+                $("#imgId").attr('src', 'img/up.png');
+                break;
+              case "2":
+                $("#imgId").attr('src', 'img/down.png');
+                break;
+              case "3":
+              // initial finished
+                $("#imgId").attr('src', 'img/finished.jpg');
+                break;
+              case "4":
+              // initialing
+                $("#imgId").attr('src', 'img/initial.jpg');
+                break;
+              case "5":
+              // disconnected
+                $("#imgId").attr('src', 'img/initial.jpg');
+                break;
+              default:
+              // run
+                $("#imgId").attr('src', 'img/run.gif');
+                break;
+
+            }
         });
 
         valueYawOneList.push(current_data_yaw_one);
