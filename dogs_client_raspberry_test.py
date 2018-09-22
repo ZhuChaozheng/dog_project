@@ -7,13 +7,7 @@ import pickle
 import time
 
 def main():
-  # read serial
-#  x = serial.Serial('/dev/ttyUSB0', 115200)
   r = []
-  num = 0
-  num1 = 0
-  length = 0
-  j = 0
   s = socket.socket()
   host = 'server.blackant.org'
 #  host = '180.109.138.23'
@@ -26,11 +20,7 @@ def main():
         #print('ii', r)
         a = pickle.dumps(r)
         s.send(a)
-        time.sleep(1)
-    # if num == 26:
-    #    num = 0
-    #    num1 = 0
-    #    r = []
+        time.sleep(1)    
   s.close()
 
 if __name__ == "__main__":
