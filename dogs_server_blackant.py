@@ -32,6 +32,8 @@ last_sensor_data = [0, 0, 0]
 # set predictions_data = 5, represent disconnect
 predictions_data = 5
 
+# add a new variable to recognize run
+velocity = 0
 
 # cmp comprise two dict
 def cmp_dict(src_data, dst_data):
@@ -49,6 +51,7 @@ def cmp_dict(src_data, dst_data):
 # this method is used to obtain type int data for each data
 def slice_data(r):
     global all_sensors_data
+    global velocity
     sensor_data = []
     if len(r) < 10:
         return [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -62,6 +65,7 @@ def slice_data(r):
     yaw_int_one = yaw_int_one / 100
     #  sensor_data.append(yaw_int_one)
     sensors_data['yaw_one'] = yaw_int_one
+    velocity = yaw_int_one
 
     pitch_str_one = ''.join(r[3:5])
     pitch_int_one = int(pitch_str_one, 16)
@@ -226,7 +230,7 @@ def initial_system(sensor_data):
         return False
 
 
-def predictions_decision_tree(sensor_data):
+def predictions_decision_tree(sensor_data, velocity):
     # print('decision', sensor_data)
     # print('current', current_sensor_data)  # precise data for dog stand up, after intial, it will not be updated
     global all_sensors_data
@@ -244,24 +248,30 @@ def predictions_decision_tree(sensor_data):
         initial_sensor_data = [-173.0, -5.12, 300] 
         # height need particularly handle, as its range isn't 0~180,-0~-180
         # if (((math.fabs(sensor_data[2]) < math.fabs(current_sensor_data[2]) - 100) and (offset_angle(sensor_data[0], current_sensor_data[0]) < 10 or (offset_angle(sensor_data[1], current_sensor_data[1]) < 10))) or (math.fabs(sensor_data[2]) < 100)):
-        if (math.fabs(sensor_data[2]) < 100):
-            if ((offset_angle(sensor_data[0], initial_sensor_data[0]) > 20) and (offset_angle(sensor_data[1], initial_sensor_data[1]) > 20)):
-                print('down1')
-                # down
-                predictions_data = 2
-            else:
-                print('lay')
-                # lay
-                predictions_data = 0
+
+        if (velocity > 0):
+            print ("run")
+            # run
+            predictions_data = 6
         else:
-            if ((offset_angle(sensor_data[0], initial_sensor_data[0]) < 20) or (offset_angle(sensor_data[1], initial_sensor_data[1]) < 20)):
-                # up
-                print('up')
-                predictions_data = 1
+            if (math.fabs(sensor_data[2]) < 100):
+                if ((offset_angle(sensor_data[0], initial_sensor_data[0]) > 20) and (offset_angle(sensor_data[1], initial_sensor_data[1]) > 20)):
+                    print('down1')
+                    # down
+                    predictions_data = 2
+                else:
+                    print('lay')
+                    # lay
+                    predictions_data = 0
             else:
-                print('down2')
-                # down
-                predictions_data = 2
+                if ((offset_angle(sensor_data[0], initial_sensor_data[0]) < 20) or (offset_angle(sensor_data[1], initial_sensor_data[1]) < 20)):
+                    # up
+                    print('up')
+                    predictions_data = 1
+                else:
+                    print('down2')
+                    # down
+                    predictions_data = 2
 
         threadLock.acquire()
         all_sensors_data['predictions'] = predictions_data
@@ -326,7 +336,7 @@ def tcplink(sock, addr):
             break
             ## return sensor_data(3 kinds of data) and all_sensors_data(7 kinds of data)
         sensor_data = slice_data(pickle_data)
-        predictions_decision_tree(sensor_data)
+        predictions_decision_tree(sensor_data, velocity)
     sock.close()
     print('Connection from %s:%s closed.' % addr)
 
