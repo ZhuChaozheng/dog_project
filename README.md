@@ -16,7 +16,7 @@ this server for the visualization of dog pose
 firstly, it support for python3. secondly, place all the files of html in the /var/www/html.
 
 # start system by self when machine running
-please add those commands in your rc.local file(/etc/init.d/rc.local), 
+please add those commands in your rc.local file(/etc/rc.local), 
 
     /usr/bin/python3 /home/blackant/Documents/dogs_server_blackant.py &
     /etc/init.d/nginx start
