@@ -195,9 +195,7 @@ def initial_system(sensor_data):
         # print('data_validation', sensor_data)
         global current_sensor_data
         global last_sensor_data
-        current_sensor_data = sensor_datasudo add-apt-repository ppa:webupd8team/atom
-    sudo apt-get update
-    sudo apt-get install atom
+        current_sensor_data = sensor_data
         # print('last_sensor_data', last_sensor_data)
         # print('current_sensor_data', current_sensor_data)
         # assign an initial value to last_sensor_data, when it is the first
