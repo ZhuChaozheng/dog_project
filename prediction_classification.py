@@ -94,10 +94,6 @@ def slice_data(sensor_data_raw):
     web_sensor_data['pitch'] = pitch_int
 
 
-    # now, web_sensor_data inherit all the data from sensor_data, accelerated_velocity,
-    # angular_velocity and pitch
-    web_sensor_data.append(sensor_data)
-
     return sensor_data
 
 # this function is used to calculate the offset value between two angles.
@@ -265,7 +261,7 @@ def tcplink(sock, addr):
 
         # now, web_sensor_data inherit all the data from sensor_data, accelerated_velocity,
         # angular_velocity, pitch and current_pose, status
-        web_sensor_data.append(status)
+        web_sensor_data['status'] = status
     sock.close()
     print('Connection from %s:%s closed.' % addr)
 
@@ -308,3 +304,54 @@ def diff_web_sensor_data():
             flag_database = 1
         last_web_sensor_data = web_sensor_data
         time.sleep(0.5)
+
+
+def mysql_server():
+    # open database
+    db = pymysql.connect("localhost", "root", "123", "dog_project")
+
+    # use function cursor() build a object cursor
+    cursor = db.cursor()
+    while True:
+
+        while (flag_database):
+            dt = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            # SQL insert sentence
+
+            sql = "INSERT INTO dog_second_version(dog_name, accelerated_velocity, \
+            angular_velocity, pitch, time)
+      VALUES ('%s', '%s', '%s', '%s', '%s')" % \
+                  ('p001', web_sensors_data['accelerated_velocity'], \
+                  web_sensors_data['angular_velocity'], web_sensors_data['pitch'], dt)
+
+            try:
+                # execute sql sentence
+                cursor.execute(sql)
+
+                db.commit()
+            except:
+                # if occur errors, then rollback
+                db.rollback()
+            time.sleep(1)
+
+    db.close()
+
+
+# as a tcp server receive the data of dog police pose, also as a web client, send the results of pose
+def main():
+    try:
+        t1 = threading.Thread(target=web_server)
+        t2 = threading.Thread(target=tcp_server)
+        t3 = threading.Thread(target=mysql_server)
+        t1.start()
+        t2.start()
+        t3.start()
+        diff_web_sensors_data()
+    except:
+        print('Error: unable to start thread')
+    while 1:
+        pass
+
+
+if __name__ == "__main__":
+    main()
