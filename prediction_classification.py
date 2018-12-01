@@ -1,31 +1,19 @@
-sensor_data_raw
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+# 引入必要的module
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+import pickle
+import time
+import os
+import math
+import urllib
+import serial
+import socket
+import threading
+import pymysql
+import datetime
 
 # define some useful global variable, which we don't need to modify them in the blew functions.
 initial_sensor_data = -3
@@ -41,15 +29,13 @@ lay = 3
 last_pose = stand_up
 current_pose = stand_up
 
+
 # this method is used to decode the communication protocal.
 # sensor_data_raw include three variables, accelerated_velocity, angular_velocity,
 # pitch. However, the variable of sensor_data_raw is encoded for transpotation, so,
 # now, we should decoded it. after decoding, the value will be stored in sensor_data.
 
-
-
 web_sensor_data = {'accelerated_velocity': 0, 'angular_velocity': 0, 'pitch': 0, 'current_pose': 0, 'status': 0}
-
 def slice_data(sensor_data_raw):
     sensor_data = {'accelerated_velocity': 0, 'angular_velocity': 0, 'pitch': 0}
     global web_sensor_data
@@ -149,7 +135,7 @@ def predictions_classification(sensor_data):
         # enter this function, it immediately hanle the variable of angular_velocity.
         # if it is greater than 1, it must be running.
         if last_pose == stand_up:
-            elif angle_offset > 40:
+            if angle_offset > 40:
                 current_pose = sit_down
                 print("sit_down")
             elif accelerated_velocity > 10:
@@ -318,8 +304,8 @@ def mysql_server():
             dt = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             # SQL insert sentence
 
-            sql = "INSERT INTO dog_second_version(dog_name, accelerated_velocity, \
-            angular_velocity, pitch, time)
+            sql = "INSERT INTO dog_second_version (dog_name, accelerated_velocity, \
+            angular_velocity, pitch, time) \
       VALUES ('%s', '%s', '%s', '%s', '%s')" % \
                   ('p001', web_sensors_data['accelerated_velocity'], \
                   web_sensors_data['angular_velocity'], web_sensors_data['pitch'], dt)
