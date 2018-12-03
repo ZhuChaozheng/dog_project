@@ -24,7 +24,7 @@ def main():
         str_read = x.read()
         #  print(str_read)
         i = ['%02x' % b for b in str_read]
-        #print(str_read_byte)
+        # print(str_read_byte)
         print(i)
         if i[0] == 'aa' and num == 0:
             num = num + 1
