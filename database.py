@@ -16,14 +16,14 @@ for i in range(50000):
            VALUES ('%s', '%s', '%d', '%c', '%d' )" % \
            ('Mac', 'Mohan', 20, 'M', i)
     try:
-       print(i)
-       # 执行sql语句
-       cursor.execute(sql)
-       # 执行sql语句
-       db.commit()
-       time.sleep(0.25)
+        print(i)
+        # 执行sql语句
+        cursor.execute(sql)
+        # 执行sql语句
+        db.commit()
+        time.sleep(0.25)
     except:
-       # 发生错误时回滚
-       db.rollback()
+        # 发生错误时回滚
+        db.rollback()
 
 db.close()
