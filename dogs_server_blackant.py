@@ -17,12 +17,48 @@ import datetime
 
 flag = 0  # for initial system
 flag_database = 0  # for database thread
-all_sensors_data = {'yaw_one': 0, 'pitch_one': 2.3, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 2.91, 'roll_two': 0, 'height': 0, 'predictions': 2}
+all_sensors_data = {
+    'yaw_one': 0,
+    'pitch_one': 2.3,
+    'roll_one': 0,
+    'yaw_two': 0,
+    'pitch_two': 2.91,
+    'roll_two': 0,
+    'height': 0,
+    'predictions': 2
+}
 threadLock = threading.Lock()
-sensors_data = {'yaw_one': 0, 'pitch_one': 0, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 0, 'roll_two': 0, 'height': 0, 'predictions': 0}
+sensors_data = {
+    'yaw_one': 0,
+    'pitch_one': 0,
+    'roll_one': 0,
+    'yaw_two': 0,
+    'pitch_two': 0,
+    'roll_two': 0,
+    'height': 0,
+    'predictions': 0
+}
 # contrast with twice web_sensors_data
-web_sensors_data = {'yaw_one': 0, 'pitch_one': 0, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 0, 'roll_two': 0, 'height': 0, 'predictions': 0}
-last_web_sensors_data = {'yaw_one': 0, 'pitch_one': 0, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 0, 'roll_two': 0, 'height': 0, 'predictions': 0}
+web_sensors_data = {
+    'yaw_one': 0,
+    'pitch_one': 0,
+    'roll_one': 0,
+    'yaw_two': 0,
+    'pitch_two': 0,
+    'roll_two': 0,
+    'height': 0,
+    'predictions': 0
+}
+last_web_sensors_data = {
+    'yaw_one': 0,
+    'pitch_one': 0,
+    'roll_one': 0,
+    'yaw_two': 0,
+    'pitch_two': 0,
+    'roll_two': 0,
+    'height': 0,
+    'predictions': 0
+}
 
 num = 0  # valid data sets number
 # contrast with twice sensor_data [pitch_one, pitch_two, height]
@@ -36,6 +72,8 @@ predictions_data = 5
 velocity = 0
 
 # cmp comprise two dict
+
+
 def cmp_dict(src_data, dst_data):
     sum_v_d = 0
     sum_v_d1 = 0
@@ -43,13 +81,13 @@ def cmp_dict(src_data, dst_data):
         sum_v_d = value + sum_v_d
     for value in dst_data.values():
         sum_v_d1 = value + sum_v_d1
-    if (sum_v_d == sum_v_d1):
+    if sum_v_d == sum_v_d1:
         return 0
     return 1
 
 
-# this method is used to obtain type int data for each data
 def slice_data(r):
+    """ this method is used to obtain type int data for each data """
     global velocity
     global all_sensors_data
     sensor_data = []
@@ -64,7 +102,7 @@ def slice_data(r):
     else:
         yaw_int_one = -yaw_int_one
     yaw_int_one = yaw_int_one / 100
-    #  sensor_data.append(yaw_int_one)
+    # sensor_data.append(yaw_int_one)
     sensors_data['yaw_one'] = yaw_int_one
     velocity = yaw_int_one
     print(velocity)
@@ -145,7 +183,7 @@ def slice_data(r):
 
 # angle1 is 0~180, -180~-0, angle2 is 0~180, -180~-0
 def offset_angle(angle1, angle2):
-    if (math.fabs(angle1 - angle2) > 180):
+    if math.fabs(angle1 - angle2) > 180:
         angle = 360 - (math.fabs(angle1) + math.fabs(angle2))
     else:
         angle = math.fabs(angle1) - math.fabs(angle2)
@@ -161,15 +199,15 @@ def data_validation(sensor_data):
     # print('last_sensor_data', last_sensor_data)
     # print('current_sensor_data', current_sensor_data)
     # assign an initial value to last_sensor_data, when it is the first
-    if (last_sensor_data[0] == 0 and last_sensor_data[1] == 0 and last_sensor_data[2] == 0):
+    if last_sensor_data[0] == 0 and last_sensor_data[1] == 0 and last_sensor_data[2] == 0:
         last_sensor_data = current_sensor_data
         return False
     # validate data in the range of 10%
-    if (offset_angle(last_sensor_data[0], current_sensor_data[0]) > 10):
+    if offset_angle(last_sensor_data[0], current_sensor_data[0]) > 10:
         #  print('error 1')
         last_sensor_data = current_sensor_data
         return False
-    if (offset_angle(last_sensor_data[1], current_sensor_data[1]) > 10):
+    if offset_angle(last_sensor_data[1], current_sensor_data[1]) > 10:
         #  print('error 2')
         last_sensor_data = current_sensor_data
         return False
@@ -183,15 +221,18 @@ def data_validation(sensor_data):
     return True
 
 
-# initial system, command dog to stand up until it return 10 sets valid data
 def initial_system(sensor_data):
+    """ initial system, command dog to stand up until it return 10 sets valid data """
     global num
     global last_sensor_data
 
     last_sensor_data = current_sensor_data
 
-    # Data validation: floating between two sets of data does not exceed 10%, if it is right, return true, else return false
     def data_validation(sensor_data):
+        """
+        Data validation:
+            floating between two sets of data does not exceed 10%, if it is right, return true, else return false
+        """
         # print('data_validation', sensor_data)
         global current_sensor_data
         global last_sensor_data
@@ -203,11 +244,11 @@ def initial_system(sensor_data):
         #     last_sensor_data = current_sensor_data
         #     return False
         # validate data in the range of 10%
-        if (offset_angle(last_sensor_data[0], current_sensor_data[0]) > 10):
+        if offset_angle(last_sensor_data[0], current_sensor_data[0]) > 10:
             #  print('error 1')
             last_sensor_data = current_sensor_data
             return False
-        if (offset_angle(last_sensor_data[1], current_sensor_data[1]) > 10):
+        if offset_angle(last_sensor_data[1], current_sensor_data[1]) > 10:
             #  print('error 2')
             last_sensor_data = current_sensor_data
             return False
@@ -220,14 +261,14 @@ def initial_system(sensor_data):
         # print('data_validation true')
         return True
 
-    if (data_validation(sensor_data)):
+    if data_validation(sensor_data):
         num = num + 1
     else:
         num = 0
     # finish initial system, predictions is 3, or predictions is 4
     global predictions_data
     # print('num', num)
-    if (num > 5):
+    if num > 5:
         predictions_data = 3
         return True
     else:
@@ -244,41 +285,43 @@ def predictions_decision_tree(sensor_data, velocity):
     global flag
     #  print(sensor_data)
     #  print(flag)
-    if (flag == 0):
-        if (initial_system(sensor_data)):
+    if flag == 0:
+        if initial_system(sensor_data):
             flag = 1
             print('initial finished')
             print(current_sensor_data)
     else:
-        if (math.fabs(velocity) > 1) :
+        if math.fabs(velocity) > 1:
             print('run')
             # run
             predictions_data = 6
-        else :
-            # initial sensor datas should be changed by the real deployed environment, so the initial_sensor_data is [-170, -170, 300]. Especially, the inital value of height is invariable.
-           # initial_sensor_data = [-173.0, -5.12, 300]
+        else:
+            # initial sensor data should be changed by the real deployed environment,
+            # so the initial_sensor_data is [-170, -170, 300]. Especially, the initial value of height is invariable.
+            # initial_sensor_data = [-173.0, -5.12, 300]
             initial_sensor_data = [-170, -1.0, 300]
             print(initial_sensor_data)
             print((offset_angle(sensor_data[0], initial_sensor_data[0])))
             print((offset_angle(sensor_data[1], initial_sensor_data[1])))
             # height need particularly handle, as its range isn't 0~180,-0~-180
-            # if (((math.fabs(sensor_data[2]) < math.fabs(current_sensor_data[2]) - 100) and (offset_angle(sensor_data[0], current_sensor_data[0]) < 10 or (offset_angle(sensor_data[1], current_sensor_data[1]) < 10))) or (math.fabs(sensor_data[2]) < 100)):
-            if ((offset_angle(sensor_data[0], initial_sensor_data[0]) > 40) or (offset_angle(sensor_data[1], initial_sensor_data[1]) > 40)):
+            # if (((math.fabs(sensor_data[2]) < math.fabs(current_sensor_data[2]) - 100) and
+            # (offset_angle(sensor_data[0], current_sensor_data[0]) < 10 or
+            # (offset_angle(sensor_data[1], current_sensor_data[1]) < 10))) or
+            # (math.fabs(sensor_data[2]) < 100)):
+            if offset_angle(sensor_data[0], initial_sensor_data[0] > 40 or
+               offset_angle(sensor_data[1], initial_sensor_data[1]) > 40):
                     print('down1')
                     # down
                     predictions_data = 2
             else:
-                if (((math.fabs(sensor_data[2]) < 100))):
-
+                if math.fabs(sensor_data[2]) < 100:
                     print('lay')
                     # lay
                     predictions_data = 0
-
                 else:
                     # up
                     print('up')
                     predictions_data = 1
-
 
         threadLock.acquire()
         all_sensors_data['predictions'] = predictions_data
@@ -342,7 +385,7 @@ def tcplink(sock, addr):
         except :
             print('pickle.loads error')
             break
-            ## return sensor_data(3 kinds of data) and all_sensors_data(7 kinds of data)
+            # return sensor_data(3 kinds of data) and all_sensors_data(7 kinds of data)
         sensor_data = slice_data(pickle_data)
         predictions_decision_tree(sensor_data, velocity)
     sock.close()
@@ -365,12 +408,11 @@ def tcp_server():
         t.start()
 
 
-
 def diff_web_sensors_data():
     global flag_database
     last_web_sensors_data = web_sensors_data
-    while (True):
-        if (cmp_dict(web_sensors_data, last_web_sensors_data) == 0):
+    while True:
+        if cmp_dict(web_sensors_data, last_web_sensors_data) == 0:
             flag_database = 0
         else:
             flag_database = 1
@@ -386,7 +428,7 @@ def mysql_server():
     cursor = db.cursor()
     while True:
 
-        while (flag_database):
+        while flag_database:
             dt = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             # SQL insert sentence
             sql = "INSERT INTO dog_tbl (dog_name, yaw_one, \
