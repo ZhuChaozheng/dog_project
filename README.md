@@ -29,9 +29,6 @@ place all the files of html in the /var/www/html.
 ## mysql
 please install mysql, and set its account and password are root, 123 respectively.
 
-## live video on raspi
-see https://blog.gtwang.org/iot/raspberry-pi-nginx-rtmp-server-live-streaming/   for detail
-
 # run
 now, first run server.py
 
@@ -45,8 +42,11 @@ if you want to run automatically this system, please add those commands in your 
 
 # Supplements
 
+## live video on raspi
+see https://blog.gtwang.org/iot/raspberry-pi-nginx-rtmp-server-live-streaming/ for detail
+
 ## dogs_client_raspberry_test.py 
-used as a tool for feature testing
+this file is used as a tool for the trial of feature
 
 ## System Architecture
-sensor data(raspberry_client.py) -> server (raspberry_server.py) -> user
+sensor data(raspberry_client.py) -> server (raspberry_server.py) -> user(index.html)
