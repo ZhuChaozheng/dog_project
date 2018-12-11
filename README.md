@@ -27,7 +27,7 @@ this server for the visualization of dog pose, it has a special featur that it s
 place all the files of html in the /var/www/html.
 
 ## Mysql
-please install mysql, and set its account and password are root, 123 respectively.
+please install mysql, and set its account and password are *root, 123* respectively.
 
 # Run
 now, first run server.py
