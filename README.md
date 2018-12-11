@@ -5,8 +5,8 @@ For a video demo, please visit the following link in detail
 
 https://www.bilibili.com/video/av34108348?share_medium=android&share_source=copy_link&bbid=452131F3-C84D-4DF0-89AF-AA0107CE68FF16810infoc&ts=1539869227641
 
-# essential softwares
-## nginx
+# Essential softwares
+## Nginx
 
 this server for live video from dog helmet
 
@@ -21,20 +21,20 @@ use this nginx.conf file to replace the default conf file in /etc/nginx/
     sudo service nginx start
 
 
-## lighttpd
+## Lighttpd
 this server for the visualization of dog pose, it has a special featur that it support for python3
 
 place all the files of html in the /var/www/html.
 
-## mysql
+## Mysql
 please install mysql, and set its account and password are root, 123 respectively.
 
-# run
+# Run
 now, first run server.py
 
     ./dogs_server_blackant.py
 
-## start system by self when machine running
+## Start system by self when machine running
 if you want to run automatically this system, please add those commands in your rc.local file(/etc/rc.local), 
 
     /usr/bin/python3 /home/blackant/Documents/dogs_server_blackant.py &
@@ -42,10 +42,10 @@ if you want to run automatically this system, please add those commands in your 
 
 # Supplements
 
-## live video on raspi
+## Live video on raspi
 see https://blog.gtwang.org/iot/raspberry-pi-nginx-rtmp-server-live-streaming/ for detail
 
-## dogs_client_raspberry_test.py 
+## Dogs_client_raspberry_test.py 
 this file is used as a tool for the trial of feature
 
 ## System Architecture
