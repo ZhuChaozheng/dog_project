@@ -14,6 +14,7 @@ import socket
 import threading
 import pymysql
 import datetime
+import json
 
 flag = 0  # for initial system
 flag_database = 0  # for database thread
@@ -381,9 +382,10 @@ def tcplink(sock, addr):
             predictions_data = 5
             break
         try:
-            pickle_data = pickle.loads(client_data)
+            # pickle_data = pickle.loads(client_data)
+            pickle_data = json.loads(client_data)
         except :
-            print('pickle.loads error')
+            print('loads error')
             break
             # return sensor_data(3 kinds of data) and all_sensors_data(7 kinds of data)
         sensor_data = slice_data(pickle_data)
