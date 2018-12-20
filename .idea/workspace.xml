@@ -2,303 +2,66 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="633cadf5-1d7b-4eec-ae28-50c9322217db" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/50x.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/echarts.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htbin/count.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/html.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/down.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/finished.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/initial.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/lay.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/up.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jquery-2.0.3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/player.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/AdvertisementPlugin.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/GTrackPlugin.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/MASTPlugin.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/OSMF.swc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/SMILPlugin.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/StrobeMediaPlayback.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/StrobeMediaPlayback.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/YouTubePlugin.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/advertisement-demo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/configuration.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/debug-mobile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/debug.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/embed-samples.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/embed.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/expressInstall.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/AdvertisementPlugin.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/GTrackPlugin.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/MASTPlugin.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/OSMF.swc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/SMILPlugin.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/StrobeMediaPlayback.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/StrobeMediaPlayback.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/YouTubePlugin.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/advertisement-demo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/configuration.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/debug-mobile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/debug.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/embed-samples.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/embed.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/expressInstall.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/hello-world-javascript.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/hello-world-jquery-plugin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_Background.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_FULLS_Disabled.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_FULLS_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_FULLS_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_PAUSE_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_PAUSE_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_PLAY_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_PLAY_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_ScrubBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_ScrubLoad.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_ScrubPlyd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_ScrubSrch.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_ScrubTab_N.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/html5-images/SMP_Tablet_InCon_ScrubTab_O.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/adobe-lq.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/dynstream.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/music.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/osmf_horizontal_red.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/playlist.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/poster.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/poster1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/poster2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/progressive.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/thumb1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/thumb2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/tooth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/images/vegetation.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/jquery-custom-chrome.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/jquery-embed-sample.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/jquery.strobemediaplayback.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/jquery.strobemediaplayback.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/jquery.strobemediaplayback.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/jquery.strobemediaplaybackchrome.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/jsdemo.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/jsdemo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/jsdemo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/ParsedQueryString.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/StrobeMediaPlayer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/debug.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/devicedetection.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jquery-1.4.2.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jquery-ui-1.8.14.custom.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jquery.strobemediaplaybackhtml5.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jquery.strobemediaplaybackhtml5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jquery/jquery-1.4.2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jquery/jquery-1.4.3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jquery/jquery-1.5.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jquery/jquery.tmpl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jscolor/_notes/dwsync.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jscolor/arrow.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jscolor/cross.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jscolor/hs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jscolor/hv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/jscolor/jscolor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/profiles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/lib/swfobject.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_button_back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_button_back_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_button_over_effect.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_button_pause.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_button_pause_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_button_play.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_button_play_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_button_zoomin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_button_zoomin_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_button_zoomout.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_button_zoomout_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_main_background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_main_background_left.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_main_background_right.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_scrub_bar_center.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_scrub_bar_loaded.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_scrub_bar_margin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_scrub_bar_played.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_scrub_bar_played_seek.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_scrub_tab.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_scrub_tab_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/SMP_separator.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/mobile-images/_notes/dwsync.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/playlists/playlist.m3u" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/setup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/skins/smartphone-skin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/skins/tablet-skin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/strobemediaplayback-iframe-embed.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_Background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_BtOverGlow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_FULLS_Back_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_FULLS_Back_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_FULLS_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_FULLS_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_PAUSE_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_PAUSE_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_PLAY_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_PLAY_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_ScrubBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_ScrubLoad.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_ScrubMargi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_ScrubPlyd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_ScrubSrch.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_ScrubTab_N.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_Tablet_InCon_ScrubTab_O.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_button_fullscreen_table.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/tablet-images/incontext/SMP_button_pause_tablet_nor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/thumbs.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/for Flash Player 10.1/youtube-googleanalytics.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/hello-world-javascript.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/hello-world-jquery-plugin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_Background.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_FULLS_Disabled.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_FULLS_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_FULLS_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_PAUSE_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_PAUSE_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_PLAY_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_PLAY_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_ScrubBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_ScrubLoad.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_ScrubPlyd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_ScrubSrch.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_ScrubTab_N.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/html5-images/SMP_Tablet_InCon_ScrubTab_O.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/adobe-lq.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/dynstream.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/music.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/osmf_horizontal_red.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/playlist.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/poster.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/poster1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/poster2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/progressive.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/thumb1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/thumb2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/tooth.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/images/vegetation.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/jquery-custom-chrome.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/jquery-embed-sample.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/jquery.strobemediaplayback.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/jquery.strobemediaplayback.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/jquery.strobemediaplayback.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/jquery.strobemediaplaybackchrome.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/jsdemo.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/jsdemo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/jsdemo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/ParsedQueryString.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/StrobeMediaPlayer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/debug.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/devicedetection.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jquery-1.4.2.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jquery-ui-1.8.14.custom.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jquery.strobemediaplaybackhtml5.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jquery.strobemediaplaybackhtml5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jquery/jquery-1.4.2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jquery/jquery-1.4.3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jquery/jquery-1.5.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jquery/jquery.tmpl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jscolor/_notes/dwsync.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jscolor/arrow.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jscolor/cross.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jscolor/hs.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jscolor/hv.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/jscolor/jscolor.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/profiles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/lib/swfobject.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_button_back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_button_back_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_button_over_effect.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_button_pause.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_button_pause_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_button_play.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_button_play_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_button_zoomin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_button_zoomin_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_button_zoomout.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_button_zoomout_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_main_background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_main_background_left.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_main_background_right.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_scrub_bar_center.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_scrub_bar_loaded.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_scrub_bar_margin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_scrub_bar_played.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_scrub_bar_played_seek.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_scrub_tab.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_scrub_tab_over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/SMP_separator.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/mobile-images/_notes/dwsync.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/playlists/playlist.m3u" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/setup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/skins/smartphone-skin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/skins/tablet-skin.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/strobemediaplayback-iframe-embed.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_Background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_BtOverGlow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_FULLS_Back_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_FULLS_Back_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_FULLS_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_FULLS_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_PAUSE_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_PAUSE_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_PLAY_Norm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_PLAY_Over.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_ScrubBack.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_ScrubLoad.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_ScrubMargi.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_ScrubPlyd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_ScrubSrch.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_ScrubTab_N.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_Tablet_InCon_ScrubTab_O.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_button_fullscreen_table.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/tablet-images/incontext/SMP_button_pause_tablet_nor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/thumbs.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/strobe/youtube-googleanalytics.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/video_cp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="742010557">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="2" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="count.py" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/count.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+            <state relative-caret-position="56">
+              <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dogs_server_blackant.py" pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dogs_server_blackant.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1379">
-              <caret line="353" column="46" lean-forward="true" selection-start-line="353" selection-start-column="46" selection-end-line="353" selection-end-column="46" />
-              <folding>
-                <element signature="e#57#95#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="224">
+              <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dogs_client_raspberry.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="128" column="53" selection-start-line="128" selection-start-column="53" selection-end-line="128" selection-end-column="53" />
+            <state relative-caret-position="3584">
+              <caret line="128" column="23" selection-start-line="128" selection-start-column="23" selection-end-line="128" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -336,9 +99,6 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="NodePackageJsonFileManager">
-    <packageJsonPaths />
-  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="755" />
     <option name="y" value="222" />
@@ -363,6 +123,19 @@
               <item name="dog_project" type="462c0819:PsiDirectoryNode" />
               <item name="html" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="dog_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dog_project" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="strobe" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dog_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dog_project" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="strobe" type="462c0819:PsiDirectoryNode" />
+              <item name="tablet-images" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -372,7 +145,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/pyworkspace" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
@@ -386,6 +159,35 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="count" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="dog_project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/count.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.count" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -401,30 +203,29 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="114" y="-8" width="2682" height="1517" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17375094" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="SciView" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1734375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,30 +235,28 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/html/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="128" column="53" selection-start-line="128" selection-start-column="53" selection-end-line="128" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/list.py" />
     <entry file="file://$PROJECT_DIR$/count.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        <state relative-caret-position="56">
+          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/list.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/dogs_server_blackant.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1379">
-          <caret line="353" column="46" lean-forward="true" selection-start-line="353" selection-start-column="46" selection-end-line="353" selection-end-column="46" />
-          <folding>
-            <element signature="e#57#95#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="224">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dogs_client_raspberry.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3584">
+          <caret line="128" column="23" selection-start-line="128" selection-start-column="23" selection-end-line="128" selection-end-column="23" />
         </state>
       </provider>
     </entry>
