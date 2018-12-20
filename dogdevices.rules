@@ -1,0 +1,4 @@
+#serialport to stm32
+KERNEL=="ttyUSB*",ATTRS{idVendor}=="1a86",ATTRS{idProduct}=="7523",MODE:="0666",SYMLINK+="serial"
+#usbcapture for infantry vision
+KERNEL=="video*",ATTRS{idVendor}=="1e4e",ATTRS{idProduct}=="0109",MODE:="0666",SYMLINK+="Video"
