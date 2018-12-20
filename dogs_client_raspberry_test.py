@@ -14,7 +14,11 @@ def main():
 #  host = '180.109.138.23'
   host = '127.0.0.1'
   port = 12343
-  s.connect((host, port))
+  try:
+    s.connect((host, port))
+    print('connected')
+  except:
+      print('request refused')
   # demo data
   r = ['00', '1e', '6c', '01', 'ea', '44', '00', 'e2', '6c',
   '01', '1e', '6c', '01', '1e', '6c', '00', '3e', '6c', '00', '7e', '0c']
@@ -22,9 +26,16 @@ def main():
         #print('ii', r)
         # a = pickle.dumps(r)
         a = json.dumps(r).encode('utf-8')
-        s.send(a)
+        try:
+            s.send(a)
+        except:
+            print('connect break')
+            s.close()
+            break
         time.sleep(1)    
   s.close()
 
+
 if __name__ == "__main__":
-    main()
+    while 1:
+        main()
