@@ -14,6 +14,7 @@ import socket
 import threading
 import pymysql
 import datetime
+import json
 
 flag = 0  # for initial system
 flag_database = 0  # for database thread
@@ -339,7 +340,7 @@ def predictions_decision_tree(sensor_data, velocity):
 def weblink(c, addr):
     #  print('web', addr)
     try:
-        a = pickle.dumps(web_sensors_data)
+        a = json.dumps(web_sensors_data)
         c.send(a)
         c.close()
     except EOFError:
@@ -381,9 +382,9 @@ def tcplink(sock, addr):
             predictions_data = 5
             break
         try:
-            pickle_data = pickle.loads(client_data)
+            pickle_data = json.loads(client_data)
         except :
-            print('pickle.loads error')
+            print('loads error')
             break
             # return sensor_data(3 kinds of data) and all_sensors_data(7 kinds of data)
         sensor_data = slice_data(pickle_data)
