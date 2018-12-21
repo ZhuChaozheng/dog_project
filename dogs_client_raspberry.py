@@ -52,7 +52,7 @@ def main():
            num = 0
            num1 = 0
            r = []
-        s.close()
+    s.close()
 
 
 if __name__ == "__main__":

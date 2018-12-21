@@ -5,12 +5,14 @@ import serial
 import socket
 import pickle
 import time
+import json
 
 def main():
   r = []
   s = socket.socket()
-  host = 'server.blackant.org'
+  # host = 'server.blackant.org'
 #  host = '180.109.138.23'
+  host = '127.0.0.1'
   port = 12343
   try:
     s.connect((host, port))
@@ -22,8 +24,6 @@ def main():
   '01', '1e', '6c', '01', '1e', '6c', '00', '3e', '6c', '00', '7e', '0c']
   while True:
         #print('ii', r)
-<<<<<<< HEAD
-        # a = pickle.dumps(r)
         a = json.dumps(r).encode('utf-8')
         try:
             s.send(a)
@@ -31,10 +31,6 @@ def main():
             print('connect break')
             s.close()
             break
-=======
-        a = pickle.dumps(r)
-        s.send(a)
->>>>>>> parent of 5e4cebb... json test
         time.sleep(1)    
   s.close()
 
