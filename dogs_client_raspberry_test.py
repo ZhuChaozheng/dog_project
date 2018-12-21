@@ -10,11 +10,9 @@ import json
 def main():
   r = []
   s = socket.socket()
-<<<<<<< HEAD
+
   # host = 'server.blackant.org'
-=======
 #  host = 'server.blackant.org'
->>>>>>> upstream/master
 #  host = '180.109.138.23'
   host = '127.0.0.1'
   port = 12343
