@@ -10,7 +10,11 @@ import json
 def main():
   r = []
   s = socket.socket()
+<<<<<<< HEAD
   # host = 'server.blackant.org'
+=======
+#  host = 'server.blackant.org'
+>>>>>>> upstream/master
 #  host = '180.109.138.23'
   host = '127.0.0.1'
   port = 12343
@@ -20,8 +24,9 @@ def main():
   except:
       print('request refused')
   # demo data
-  r = ['00', '1e', '6c', '01', 'ea', '44', '00', 'e2', '6c',
-  '01', '1e', '6c', '01', '1e', '6c', '00', '3e', '6c', '00', '7e', '0c']
+#  r = ['00', '1e', '6c', '01', 'ea', '44', '00', 'e2', '6c',
+#  '01', '1e', '6c', '01', '1e', '6c', '00', '3e', '6c', '00', '7e', '0c']
+  r = ['00', '1e', '6c', '01', 'ea', '44', '00', 'e2', '6c']
   while True:
         #print('ii', r)
         a = json.dumps(r).encode('utf-8')
