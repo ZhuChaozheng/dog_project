@@ -342,7 +342,8 @@ def tcplink(sock, addr):
             pickle_data = pickle.loads(client_data)
         except :
             print('pickle.loads error')
-            break
+            continue
+        #    break
             ## return sensor_data(3 kinds of data) and all_sensors_data(7 kinds of data)
         sensor_data = slice_data(pickle_data)
         predictions_decision_tree(sensor_data, velocity)

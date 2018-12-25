@@ -286,6 +286,7 @@ def predictions_decision_tree(sensor_data, velocity):
     global flag
     #  print(sensor_data)
     #  print(flag)
+    flag = 1
     if flag == 0:
         if initial_system(sensor_data):
             flag = 1
@@ -351,7 +352,7 @@ def web_server():
     # client server
     server = socket.socket()
     host_server = '0.0.0.0'
-    port_server = 9999
+    port_server = 12342
     server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server.bind((host_server, port_server))
     server.listen(5)
