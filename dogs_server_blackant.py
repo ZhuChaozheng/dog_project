@@ -264,7 +264,8 @@ def predictions_decision_tree(sensor_data, velocity):
       #      print((offset_angle(sensor_data[1], initial_sensor_data[1])))
             # height need particularly handle, as its range isn't 0~180,-0~-180
             # if (((math.fabs(sensor_data[2]) < math.fabs(current_sensor_data[2]) - 100) and (offset_angle(sensor_data[0], current_sensor_data[0]) < 10 or (offset_angle(sensor_data[1], current_sensor_data[1]) < 10))) or (math.fabs(sensor_data[2]) < 100)):
-            if (offset_angle(sensor_data[0], initial_sensor_data[0]) > 40):
+            if (offset_angle(sensor_data[0], initial_sensor_data[0]) > 30 or
+                    offset_angle(sensor_data[1], initial_sensor_data[1]) > 30):
                     print('down1')
                     # down
                     predictions_data = 2
