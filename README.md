@@ -50,3 +50,6 @@ this file is used as a tool for the trial of feature
 
 ## System Architecture
 sensor data(raspberry_client.py) -> server (raspberry_server.py) -> user(index.html)
+
+## frp
+To access dog device conventionally, we add a client on pi to map port 22, so we can access directly from Internet instead of LAN.
