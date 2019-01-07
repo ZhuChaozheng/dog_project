@@ -40,6 +40,13 @@ if you want to run automatically this system, please add those commands in your 
     /usr/bin/python3 /home/blackant/Documents/dogs_server_blackant.py &
     /etc/init.d/nginx start
 
+## prepare for your own system
+Now, we prepare a img file for restore our system. However, you should modify some file before using it. those files are shown as the following:
+    
+    1. run_video.sh
+    2. /etc/hostname
+    3. frpc.ini
+
 # Supplements
 
 ## Live video on raspi
