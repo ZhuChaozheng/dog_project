@@ -1,100 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>公安部南京警犬研究所</title>
-<!-- 引入 echarts.js -->
-<script src="echarts.min.js"></script>
-<script src="jquery-2.0.3.js"></script>
-<script>
-	    $(window).load(function() { 
-		    var video=$("#video");
-			video.empty();
-			var myHtml;
-            var num=parseInt(prompt("请输入装备编号","1"));
-		    switch(num){
-		    case 1:
-			    myHtml="<iframe src='http://server.blackant.org:4201/video_2710.html' width='100%' height='100%' frameborder=0> </iframe>";
-			    break;
-		    case 2:
-			    myHtml="<iframe src='http://server.blackant.org:4201/video_2711.html' width='100%' height='100%' frameborder=0> </iframe>";
-			    break;
-            case 3:
-			    myHtml="<iframe src='http://server.blackant.org:4201/video_2712.html' width='100%' height='100%' frameborder=0> </iframe>";
-			    break;			   
-		    }
-			video.append(myHtml);
-         }); 
-	</script>
-<style>
-html, body {
-	height: 97%;
-	width: 99%;
-}
+    <meta charset="utf-8">
+    <title>公安部南京警犬研究所</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+    <script src="jquery-2.0.3.js"></script>
 
-/* content include data and video */
-#content {
-	height: 100%;
-	width: 100%;
-}
+    <style>
+    html,body {
+        height:97%;
+        width:99%;
+    }
 
-#data {
-	height: 100%;
-	width: 40%;
-	float: left;
-}
+    /* content include data and video */
+    #content {
+      height:100%;
+      width:100%;
+    }
+    #data {
+      height:100%;
+      width:40%;
+      float:left;
+    }
+    #video {
+        width:60%;
+        height:100%;
+        float:left;
+        padding:15px 0px 0px 0px;
+    }
 
-#video {
-	width: 60%;
-	height: 100%;
-	float: left;
-	padding: 15px 0px 0px 0px;
-}
+    /* data include charts and poses */
+    #charts {
+/*        line-height:30px;*/
+        /* background-color:#eeeeee; */
+        height:60%;
+        width:95%;
+        float:left;
+        padding:5px;
+    }
+    #poses {
+/*        line-height:30px;*/
+        height:40%;
+        width:85%;
+        float:left;
+        padding:0px 20px;
+    }
 
-/* data include charts and poses */
-#charts {
-	/*        line-height:30px;*/
-	/* background-color:#eeeeee; */
-	height: 60%;
-	width: 95%;
-	float: left;
-	padding: 5px;
-}
+    #StrobeMediaPlayback {
+        height:100%;
+        width:100%;
+        padding:5px;
+    }
 
-#poses {
-	/*        line-height:30px;*/
-	height: 40%;
-	width: 85%;
-	float: left;
-	padding: 0px 20px;
-}
-
-#StrobeMediaPlayback {
-	height: 100%;
-	width: 100%;
-	padding: 5px;
-}
-</style>
+    </style>
 </head>
 
 <body>
 
-	<!-- <div id="header">
+<!-- <div id="header">
 <h1>City Gallery</h1>
 </div> -->
-	<div id="content">
-		<div id="data">
-			<div id="charts"></div>
-			<div id="poses">
-				<img id="imgId" src="img/down.png" width="100%" height="100%">
-			</div>
-		</div>
+<div id="content">
+  <div id="data">
+    <div id="charts">
+    </div>
+    <div id="poses">
+      <img id="imgId" src="img/down.png" width="100%" height="100%">
+    </div>
+  </div>
 
-		<div id="video">
-			<iframe src='http://server.blackant.org:4201/video.html' width='100%'
-				height='100%' frameborder=0> </iframe>
-		</div>
-	</div>
+  <div id="video">
+    <iframe src='http://server.blackant.org:4201/video.html' width='100%' height='100%' frameborder=0> </iframe> 
+  </div>
+</div>
 
 </body>
 <script type="text/javascript">
@@ -127,53 +106,29 @@ html, body {
         now = [seconds.getHours(), seconds.getMinutes(), seconds.getSeconds()].join(':');
         dateList.push(now);
 
-        // $("#imgId").attr('src', 'img/run.gif');
-
         $.getJSON('/htbin/count.py', function(result) {
             current_data_yaw_one = result.pitch_one;
             current_data_yaw_two = result.pitch_two;
             current_data_ridar = result.height;
             predictions = result.predictions;
 
-            /*
-            * explain the variable of predictions
-            * 0: lay
-            * 1: up
-            * 2: down
-            * 3: initialing
-            * 4: finished
-            * 5: disconnected, so show as initialing
-            * 6: run
-            */
+        if (predictions == "0")
+          $("#imgId").attr('src', 'img/lay.png');
+        else if (predictions == "2")
+          $("#imgId").attr('src', 'img/down.png');
+        else if (predictions == "1")
+          $("#imgId").attr('src', 'img/up.png');
+        else if (predictions == "3")
+	  // initial finished
+          $("#imgId").attr('src', 'img/finished.jpg');
+        else if (predictions == "4")
+          // initialing
+          $("#imgId").attr('src', 'img/initial.jpg');
+        else if (predictions == '5')
+            // disconnected
+          $("#imgId").attr('src', 'img/initial.jpg');
+         
 
-            switch (predictions) {
-              case "0":
-                $("#imgId").attr('src', 'img/lay.png');
-                break;
-              case "1":
-                $("#imgId").attr('src', 'img/up.png');
-                break;
-              case "2":
-                $("#imgId").attr('src', 'img/down.png');
-                break;
-              case "3":
-              // initial finished
-                $("#imgId").attr('src', 'img/finished.jpg');
-                break;
-              case "4":
-              // initialing
-                $("#imgId").attr('src', 'img/initial.jpg');
-                break;
-              case "5":
-              // disconnected
-                $("#imgId").attr('src', 'img/initial.jpg');
-                break;
-              default:
-              // run
-                $("#imgId").attr('src', 'img/run.gif');
-                break;
-
-            }
         });
 
         valueYawOneList.push(current_data_yaw_one);
@@ -301,10 +256,9 @@ html, body {
             addData(true);
         }
         myChart.setOption(option);
-    }, 330);
+    }, 500);
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 </script>
 </html>
-

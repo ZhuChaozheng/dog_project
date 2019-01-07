@@ -5,14 +5,14 @@
 <style>
 html,body {
   width:99%;
-  height:99%;
+  height:98%;
 }
 </style>
 <!-- strobe -->
 <script type="text/javascript" src="strobe/lib/swfobject.js"></script>
 <script type="text/javascript">
   var parameters = {  
-     src: "rtmp://server.blackant.org/live2/world",  
+     src: "rtmp://server.blackant.org:1935/live_2710/hello",  
      autoPlay: true,  
      controlBarAutoHide: false,  
      playButtonOverlay: false,  
@@ -26,8 +26,8 @@ html,body {
   swfobject.embedSWF(
     "strobe/StrobeMediaPlayback.swf"
     , "StrobeMediaPlayback"
-    , 1024
-    , 768
+    , "100%"
+    , "100%"
     , "10.1.0"
     , "strobe/expressInstall.swf"
     , parameters
