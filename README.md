@@ -40,6 +40,13 @@ if you want to run automatically this system, please add those commands in your 
     /usr/bin/python3 /home/blackant/Documents/dogs_server_blackant.py &
     /etc/init.d/nginx start
 
+## Prepare for your own system
+Now, we prepare a img file for restore our system. However, you should modify some file before using it. those files are shown as the following:
+    
+    1. run_video.sh
+    2. /etc/hostname
+    3. frpc.ini
+
 # Supplements
 
 ## Live video on raspi
@@ -50,3 +57,6 @@ this file is used as a tool for the trial of feature
 
 ## System Architecture
 sensor data(raspberry_client.py) -> server (raspberry_server.py) -> user(index.html)
+
+## Frp
+To access dog device conventionally, we add a client on pi to map port 22, so we can access directly from Internet instead of LAN.

@@ -8,6 +8,7 @@ import json
 def main():
   s = socket.socket()
   host = 'localhost'
+# host = 'server.blackant.org'
   port = 12342
   s.connect((host, port))
   client_data = s.recv(1024)
@@ -15,6 +16,7 @@ def main():
     pickle_data = pickle.loads(client_data)
     pickle_data['predictions'] = str(pickle_data['predictions'])
     jason = json.dumps(pickle_data)
+    print ("Content-type: application/json")
     print()
     print(jason)
 

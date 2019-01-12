@@ -1,79 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>公安部南京警犬研究所</title>
-    <!-- 引入 echarts.js -->
-    <script src="echarts.min.js"></script>
-    <script src="jquery-2.0.3.js"></script>
+<meta charset="utf-8">
+<title>公安部南京警犬研究所</title>
+<!-- 引入 echarts.js -->
+<script src="echarts.min.js"></script>
+<script src="jquery-2.0.3.js"></script>
+<script>
+	    $(window).load(function() { 
+		    var video=$("#video");
+			video.empty();
+			var myHtml;
+            var num=parseInt(prompt("请输入装备编号","1"));
+		    switch(num){
+		    case 1:
+			    myHtml="<iframe src='http://server.blackant.org:4201/video_2710.html' width='100%' height='100%' frameborder=0> </iframe>";
+			    break;
+		    case 2:
+			    myHtml="<iframe src='http://server.blackant.org:4201/video_2711.html' width='100%' height='100%' frameborder=0> </iframe>";
+			    break;
+            case 3:
+			    myHtml="<iframe src='http://server.blackant.org:4201/video_2712.html' width='100%' height='100%' frameborder=0> </iframe>";
+			    break;			   
+		    }
+			video.append(myHtml);
+         }); 
+	</script>
+<style>
+html, body {
+	height: 97%;
+	width: 99%;
+}
 
-    <style>
-    html,body {
-        height:97%;
-        width:99%;
-    }
+/* content include data and video */
+#content {
+	height: 100%;
+	width: 100%;
+}
 
-    /* content include data and video */
-    #content {
-      height:100%;
-      width:100%;
-    }
-    #data {
-      height:100%;
-      width:40%;
-      float:left;
-    }
-    #video {
-        width:60%;
-        height:100%;
-        float:left;
-        padding:15px 0px 0px 0px;
-    }
+#data {
+	height: 100%;
+	width: 40%;
+	float: left;
+}
 
-    /* data include charts and poses */
-    #charts {
-/*        line-height:30px;*/
-        /* background-color:#eeeeee; */
-        height:60%;
-        width:95%;
-        float:left;
-        padding:5px;
-    }
-    #poses {
-/*        line-height:30px;*/
-        height:40%;
-        width:85%;
-        float:left;
-        padding:0px 20px;
-    }
+#video {
+	width: 60%;
+	height: 100%;
+	float: left;
+	padding: 15px 0px 0px 0px;
+}
 
-    #StrobeMediaPlayback {
-        height:100%;
-        width:100%;
-        padding:5px;
-    }
+/* data include charts and poses */
+#charts {
+	/*        line-height:30px;*/
+	/* background-color:#eeeeee; */
+	height: 60%;
+	width: 95%;
+	float: left;
+	padding: 5px;
+}
 
-    </style>
+#poses {
+	/*        line-height:30px;*/
+	height: 40%;
+	width: 85%;
+	float: left;
+	padding: 0px 20px;
+}
+
+#StrobeMediaPlayback {
+	height: 100%;
+	width: 100%;
+	padding: 5px;
+}
+</style>
 </head>
 
 <body>
 
-<!-- <div id="header">
+	<!-- <div id="header">
 <h1>City Gallery</h1>
 </div> -->
-<div id="content">
-  <div id="data">
-    <div id="charts">
-    </div>
-    <div id="poses">
-      <img id="imgId" src="img/down.png" width="100%" height="100%">
-    </div>
-  </div>
+	<div id="content">
+		<div id="data">
+			<div id="charts"></div>
+			<div id="poses">
+				<img id="imgId" src="img/down.png" width="100%" height="100%">
+			</div>
+		</div>
 
-  <div id="video">
-    <iframe src='http://server.blackant.org:4201/video.html' width='100%' height='100%' frameborder=0> </iframe>
-  </div>
-</div>
+		<div id="video">
+			<iframe src='http://server.blackant.org:4201/video.html' width='100%'
+				height='100%' frameborder=0> </iframe>
+		</div>
+	</div>
 
 </body>
 <script type="text/javascript">
@@ -280,9 +301,10 @@
             addData(true);
         }
         myChart.setOption(option);
-    }, 500);
+    }, 330);
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 </script>
 </html>
+
