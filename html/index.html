@@ -67,12 +67,21 @@ html, body {
 	width: 85%;
 	float: left;
 	padding: 0px 20px;
+        z-index:1;
 }
 
 #StrobeMediaPlayback {
 	height: 100%;
 	width: 100%;
 	padding: 5px;
+}
+.hint{
+    position:absolute;
+    left:360px;
+    top:370px;
+    cursor:default;
+    color:red;
+    z-index:10;
 }
 </style>
 </head>
@@ -87,6 +96,7 @@ html, body {
 			<div id="charts"></div>
 			<div id="poses">
 				<img id="imgId" src="img/down.png" width="100%" height="100%">
+<p class="hint">当前姿态：<span id="hint"></span></p>
 			</div>
 		</div>
 
@@ -148,12 +158,15 @@ html, body {
 
             switch (predictions) {
               case "0":
+                $("#hint").text("卧");
                 $("#imgId").attr('src', 'img/lay.png');
                 break;
               case "1":
+                $("#hint").text("立");
                 $("#imgId").attr('src', 'img/up.png');
                 break;
               case "2":
+                $("#hint").text("坐");
                 $("#imgId").attr('src', 'img/down.png');
                 break;
               case "3":
@@ -170,6 +183,7 @@ html, body {
                 break;
               default:
               // run
+                $("#hint").text("跑");
                 $("#imgId").attr('src', 'img/run.gif');
                 break;
 
