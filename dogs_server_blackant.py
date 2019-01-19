@@ -17,12 +17,12 @@ import datetime
 
 flag = 0  # for initial system
 flag_database = 0  # for database thread
-all_sensors_data = {'yaw_one': 0, 'pitch_one': 2.3, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 2.91, 'roll_two': 0, 'height': 0, 'predictions': 2}
+all_sensors_data = {'equip_id': 'p001', 'yaw_one': 0, 'pitch_one': 2.3, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 2.91, 'roll_two': 0, 'height': 0, 'predictions': 2}
 threadLock = threading.Lock()
-sensors_data = {'yaw_one': 0, 'pitch_one': 0, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 0, 'roll_two': 0, 'height': 0, 'predictions': 0}
+sensors_data = {'equip_id': 'p001', 'yaw_one': 0, 'pitch_one': 0, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 0, 'roll_two': 0, 'height': 0, 'predictions': 0}
 # contrast with twice web_sensors_data
-web_sensors_data = {'yaw_one': 0, 'pitch_one': 0, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 0, 'roll_two': 0, 'height': 0, 'predictions': 0}
-last_web_sensors_data = {'yaw_one': 0, 'pitch_one': 0, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 0, 'roll_two': 0, 'height': 0, 'predictions': 0}
+web_sensors_data = {'equip_id': 'p001', 'yaw_one': 0, 'pitch_one': 0, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 0, 'roll_two': 0, 'height': 0, 'predictions': 0}
+last_web_sensors_data = {'equip_id': 'p001', 'yaw_one': 0, 'pitch_one': 0, 'roll_one': 0, 'yaw_two': 0, 'pitch_two': 0, 'roll_two': 0, 'height': 0, 'predictions': 0}
 
 num = 0  # valid data sets number
 # contrast with twice sensor_data [pitch_one, pitch_two, height]
@@ -34,6 +34,7 @@ predictions_data = 5
 
 # need a global variable to add a new feature run
 velocity = 0
+
 
 # cmp comprise two dict
 def cmp_dict(src_data, dst_data):
@@ -52,6 +53,7 @@ def cmp_dict(src_data, dst_data):
 def slice_data(r):
     global velocity
     global all_sensors_data
+    sensors_data['equip_id'] = r.pop()
     sensor_data = []
     if len(r) < 10:
         return [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -258,7 +260,7 @@ def predictions_decision_tree(sensor_data, velocity):
         else :
             # initial sensor datas should be changed by the real deployed environment, so the initial_sensor_data is [-170, -170, 300]. Especially, the inital value of height is invariable.
            # initial_sensor_data = [-173.0, -5.12, 300]
-            initial_sensor_data = [-170, -1.0, 300] 
+            initial_sensor_data = [-170, -1.0, 300]
     #        print(initial_sensor_data)
      #       print((offset_angle(sensor_data[0], initial_sensor_data[0])))
       #      print((offset_angle(sensor_data[1], initial_sensor_data[1])))
@@ -296,12 +298,16 @@ def predictions_decision_tree(sensor_data, velocity):
 
 def weblink(c, addr):
     #  print('web', addr)
-    try:
-        a = pickle.dumps(web_sensors_data)
-        c.send(a)
-        c.close()
-    except EOFError:
-        print('eoferror')
+    sql = "SELECT * FROM dog_tbl WHERE dt = (SELECT MAX(dt) FROM dog_tbl)"
+    while 1:
+        rows = cursor.execute(sql)
+        try:
+            a = pickle.dumps(rows[0])
+            c.send(a)
+        except EOFError:
+            print('eoferror')
+            c.close()
+            break
 
 
 def web_server():
@@ -322,8 +328,11 @@ def web_server():
 
 def tcplink(sock, addr):
     print('Accept new connection from %s:%s...' % addr)
-    global predictions_data
+    
+    # get new equip id
+    
     # set predictions_data = 4, represent connect
+    global predictions_data
     predictions_data = 4
     # in order to initial system every time, when a new connection is constructed, so set flag = 0
     global flag
@@ -385,7 +394,8 @@ def mysql_server():
     db = pymysql.connect("localhost", "root", "123", "dog_project")
 
     # use function cursor() build a object cursor
-    cursor = db.cursor()
+    cursor = db.cursor(cursor=pymysql.cursors.DictCursor)
+    global cursor
     while True:
 
         while (flag_database):
@@ -395,7 +405,7 @@ def mysql_server():
       yaw_two, pitch_one, pitch_two, roll_one, \
       roll_two, height, time) \
       VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" % \
-                  ('p001', web_sensors_data['yaw_one'], web_sensors_data['yaw_two'], web_sensors_data['pitch_one'],
+                  (web_sensors_data['equip_id'], web_sensors_data['yaw_one'], web_sensors_data['yaw_two'], web_sensors_data['pitch_one'],
                    web_sensors_data['pitch_two'], web_sensors_data['roll_one'], web_sensors_data['roll_two'],
                    web_sensors_data['height'], dt)
 

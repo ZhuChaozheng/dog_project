@@ -7,24 +7,27 @@
 <script src="echarts.min.js"></script>
 <script src="jquery-2.0.3.js"></script>
 <script>
-	    $(window).load(function() { 
+	    $(window).load(function() {
 		    var video=$("#video");
 			video.empty();
 			var myHtml;
             var num=parseInt(prompt("请输入装备编号","1"));
 		    switch(num){
 		    case 1:
+		        window.addr = '/htbin/count1.py';
 			    myHtml="<iframe src='http://server.blackant.org:4201/video_2710.html' width='100%' height='100%' frameborder=0> </iframe>";
 			    break;
 		    case 2:
+		        window.addr = '/htbin/count2.py';
 			    myHtml="<iframe src='http://server.blackant.org:4201/video_2711.html' width='100%' height='100%' frameborder=0> </iframe>";
 			    break;
             case 3:
+                window.addr = '/htbin/count3.py';
 			    myHtml="<iframe src='http://server.blackant.org:4201/video_2712.html' width='100%' height='100%' frameborder=0> </iframe>";
-			    break;			   
+			    break;
 		    }
 			video.append(myHtml);
-         }); 
+         });
 	</script>
 <style>
 html, body {
@@ -139,7 +142,7 @@ html, body {
 
         // $("#imgId").attr('src', 'img/run.gif');
 
-        $.getJSON('/htbin/count.py', function(result) {
+        $.getJSON(window.addr, function(result) {
             current_data_yaw_one = result.pitch_one;
             current_data_yaw_two = result.pitch_two;
             current_data_ridar = result.height;
