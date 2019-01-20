@@ -10,20 +10,20 @@
 	    $(window).load(function() { 
 		    var video=$("#video");
 			video.empty();
-			var myHtml;
+			var selector;
             var num=parseInt(prompt("请输入装备编号","1"));
 		    switch(num){
 		    case 1:
-			    myHtml="<iframe src='http://server.blackant.org:4201/video_2710.html' width='100%' height='100%' frameborder=0> </iframe>";
+			    selector="<iframe src='http://server.blackant.org:4201/video_2710.html' width='100%' height='100%' frameborder=0> </iframe>";
 			    break;
 		    case 2:
-			    myHtml="<iframe src='http://server.blackant.org:4201/video_2711.html' width='100%' height='100%' frameborder=0> </iframe>";
+			    selector="<iframe src='http://server.blackant.org:4201/video_2711.html' width='100%' height='100%' frameborder=0> </iframe>";
 			    break;
-            case 3:
-			    myHtml="<iframe src='http://server.blackant.org:4201/video_2712.html' width='100%' height='100%' frameborder=0> </iframe>";
+                    case 3:
+			    selector="<iframe src='http://server.blackant.org:4201/video_2712.html' width='100%' height='100%' frameborder=0> </iframe>";
 			    break;			   
 		    }
-			video.append(myHtml);
+			video.append(selector);
          }); 
 	</script>
 <style>
@@ -68,6 +68,7 @@ html, body {
 	float: left;
 	padding: 0px 20px;
         z-index:1;
+        position:relative;
 }
 
 #StrobeMediaPlayback {
@@ -75,10 +76,11 @@ html, body {
 	width: 100%;
 	padding: 5px;
 }
+	
 .hint{
     position:absolute;
-    left:360px;
-    top:370px;
+    left:35%;
+    top:1%;
     cursor:default;
     color:red;
     z-index:10;
@@ -96,7 +98,7 @@ html, body {
 			<div id="charts"></div>
 			<div id="poses">
 				<img id="imgId" src="img/down.png" width="100%" height="100%">
-<p class="hint">当前姿态：<span id="hint"></span></p>
+                                <p class="hint">当前姿态：<span id="hint"></span></p>
 			</div>
 		</div>
 
@@ -110,7 +112,7 @@ html, body {
 <script type="text/javascript">
 
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('charts'));
+    var dataChart = echarts.init(document.getElementById('charts'));
 
     // 指定图表的配置项和数据
     var dateList = [];
@@ -183,7 +185,7 @@ html, body {
                 break;
               default:
               // run
-                $("#hint").text("跑");
+                $("#hint").text("运动中");
                 $("#imgId").attr('src', 'img/run.gif');
                 break;
 
@@ -314,11 +316,11 @@ html, body {
         else {
             addData(true);
         }
-        myChart.setOption(option);
+        dataChart.setOption(option);
     }, 330);
 
     // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+    dataChart.setOption(option);
 </script>
 </html>
 
