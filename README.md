@@ -1,6 +1,8 @@
 # dog_project
 A project for the recognition of dog pose. For the first version, we use the sensors-network based on Zigbee, which is weared on the dog from a vest, and also equip a helmet with a sigle camera, which can transmit live video to police staff. All of these communicate with the back-end server through 4G.
+
 ![Data vest and assembly demonstration presented]./doc/pic/dogvest.jpg
+
 For a video demo, please visit the following link in detail
 
 https://www.bilibili.com/video/av34108348?share_medium=android&share_source=copy_link&bbid=452131F3-C84D-4DF0-89AF-AA0107CE68FF16810infoc&ts=1539869227641
