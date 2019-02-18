@@ -4,32 +4,32 @@
 <meta charset="utf-8">
 <title>公安部南京警犬研究所</title>
 <!-- 引入 echarts.js -->
-<script src="/static/echarts.min.js"></script>
-<script src="/static/jquery-2.0.3.js"></script>
+<script src="echarts.min.js"></script>
+<script src="jquery-2.0.3.js"></script>
 <script>
 	    $(window).load(function() {
-		    {#var video=$("#video");#}
-			{#video.empty();#}
-			{#var myHtml;#}
+		    var video=$("#video");
+			video.empty();
+			var myHtml;
             var num=parseInt(prompt("请输入装备编号","1"));
 		    switch(num){
 
 		    case 1:
 		        window.num = 'p001';
-			    {#myHtml="<iframe src='http://server.blackant.org:4201/video_2710.html' width='100%' height='100%' frameborder=0> </iframe>";#}
+			    myHtml="<iframe src='http://server.blackant.org:4201/video_2710.html' width='100%' height='100%' frameborder=0> </iframe>";
 			    break;
 		    case 2:
 		        window.num = 'p002';
-			    {#myHtml="<iframe src='http://server.blackant.org:4201/video_2711.html' width='100%' height='100%' frameborder=0> </iframe>";#}
+			    myHtml="<iframe src='http://server.blackant.org:4201/video_2711.html' width='100%' height='100%' frameborder=0> </iframe>";
 			    break;
             case 3:
                 window.num = 'p003';
-			    {#myHtml="<iframe src='http://server.blackant.org:4201/video_2712.html' width='100%' height='100%' frameborder=0> </iframe>";#}
+			    myHtml="<iframe src='http://server.blackant.org:4201/video_2712.html' width='100%' height='100%' frameborder=0> </iframe>";
 
 			    break;
 
 		    }
-			{#video.append(myHtml);#}
+			video.append(myHtml);
          });
 	</script>
 <style>
@@ -74,7 +74,6 @@ html, body {
 	float: left;
 	padding: 0px 20px;
         z-index:1;
-        position:relative;
 }
 
 #StrobeMediaPlayback {
@@ -84,8 +83,8 @@ html, body {
 }
 .hint{
     position:absolute;
-    left:70%;
-    top:1%;
+    left:360px;
+    top:370px;
     cursor:default;
     color:red;
     z-index:10;
@@ -94,6 +93,7 @@ html, body {
 </head>
 
 <body>
+
 	<!-- <div id="header">
 <h1>City Gallery</h1>
 </div> -->
@@ -101,10 +101,9 @@ html, body {
 		<div id="data">
 			<div id="charts"></div>
 			<div id="poses">
-				<img id="imgId" src="/static/img/down.png" width="100%" height="100%">
-                                <p class="hint">当前姿态：<span id="hint"></span></p>
+				<img id="imgId" src="img/down.png" width="100%" height="100%">
+<p class="hint">当前姿态：<span id="hint"></span></p>
 			</div>
-
 		</div>
 
 		<div id="video">
@@ -145,7 +144,7 @@ html, body {
         dateList.push(now);
         // $("#imgId").attr('src', 'img/run.gif');
 		$.ajax({
-			url:'http://server.blackant.org:8001/htbin/counts',
+			url:'http://127.0.0.1:8000/htbin/counts',
 			type:"post",
 			data:{
 				count: window.num
@@ -156,6 +155,7 @@ html, body {
             current_data_yaw_two = result.pitch_two;
             current_data_ridar = result.height;
             predictions = result.predictions;
+
             /*
             * explain the variable of predictions
             * 0: lay
@@ -170,32 +170,32 @@ html, body {
             switch (predictions) {
               case "0":
                 $("#hint").text("卧");
-                $("#imgId").attr('src', '/static/img/lay.png');
+                $("#imgId").attr('src', 'img/lay.png');
                 break;
               case "1":
                 $("#hint").text("立");
-                $("#imgId").attr('src', '/static/img/up.png');
+                $("#imgId").attr('src', 'img/up.png');
                 break;
               case "2":
                 $("#hint").text("坐");
-                $("#imgId").attr('src', '/static/img/down.png');
+                $("#imgId").attr('src', 'img/down.png');
                 break;
               case "3":
               // initial finished
-                $("#imgId").attr('src', '/static/img/finished.jpg');
+                $("#imgId").attr('src', 'img/finished.jpg');
                 break;
               case "4":
               // initialing
-                $("#imgId").attr('src', '/static/img/initial.jpg');
+                $("#imgId").attr('src', 'img/initial.jpg');
                 break;
               case "5":
               // disconnected
-                $("#imgId").attr('src', '/static/img/initial.jpg');
+                $("#imgId").attr('src', 'img/initial.jpg');
                 break;
               default:
               // run
                 $("#hint").text("跑");
-                $("#imgId").attr('src', '/static/img/run.gif');
+                $("#imgId").attr('src', 'img/run.gif');
                 break;
 
             }
