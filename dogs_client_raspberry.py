@@ -7,7 +7,7 @@ import pickle
 import time
 
 
-def main(equip_id):
+def main():
     # read serial
     x = serial.Serial('/dev/ttyUSB0', 115200)
     r = []
@@ -44,8 +44,7 @@ def main(equip_id):
             num = num + 1
             if len(r) == 21:
                 print('ii', r)
-            
-            r.append(equip_id)
+
             a = pickle.dumps(r)
             s.send(a)
             time.sleep(1)
@@ -57,6 +56,6 @@ def main(equip_id):
 
 
 if __name__ == "__main__":
-    main('p001')
+    main()
 
 
