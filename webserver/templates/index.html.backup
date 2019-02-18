@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>公安部南京警犬研究所</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+    <script src="jquery-2.0.3.js"></script>
+
+    <style>
+    html,body {
+        height:97%;
+        width:99%;
+    }
+
+    /* content include data and video */
+    #content {
+      height:100%;
+      width:100%;
+    }
+    #data {
+      height:100%;
+      width:40%;
+      float:left;
+    }
+    #video {
+        width:60%;
+        height:100%;
+        float:left;
+        padding:15px 0px 0px 0px;
+    }
+
+    /* data include charts and poses */
+    #charts {
+/*        line-height:30px;*/
+        /* background-color:#eeeeee; */
+        height:60%;
+        width:95%;
+        float:left;
+        padding:5px;
+    }
+    #poses {
+/*        line-height:30px;*/
+        height:40%;
+        width:85%;
+        float:left;
+        padding:0px 20px;
+    }
+
+    #StrobeMediaPlayback {
+        height:100%;
+        width:100%;
+        padding:5px;
+    }
+
+    </style>
+</head>
+
+<body>
+
+<!-- <div id="header">
+<h1>City Gallery</h1>
+</div> -->
+<div id="content">
+  <div id="data">
+    <div id="charts">
+    </div>
+    <div id="poses">
+      <img id="imgId" src="img/down.png" width="100%" height="100%">
+    </div>
+  </div>
+
+  <div id="video">
+    <iframe src='http://server.blackant.org:4201/video.html' width='100%' height='100%' frameborder=0> </iframe> 
+  </div>
+</div>
+
+</body>
+<script type="text/javascript">
+
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('charts'));
+
+    // 指定图表的配置项和数据
+    var dateList = [];
+
+    var valueYawOneList = [];
+    var valueYawTwoList = [];
+    var valueRidarList = [];
+
+    var data_yaw_one = [];
+    var data_yaw_two = [];
+    var data_ridar = [];
+
+    var current_data_yaw_one;
+    var current_data_yaw_two;
+    var current_data_ridar;
+    var current_data_predictions;
+
+    function addData(shift) {
+        var data_current_yaw_one = [];
+        var data_current_yaw_two = [];
+        var data_current_ridar = [];
+
+        var seconds = new Date();
+        now = [seconds.getHours(), seconds.getMinutes(), seconds.getSeconds()].join(':');
+        dateList.push(now);
+
+        $.getJSON('/htbin/count.py', function(result) {
+            current_data_yaw_one = result.pitch_one;
+            current_data_yaw_two = result.pitch_two;
+            current_data_ridar = result.height;
+            predictions = result.predictions;
+
+        if (predictions == "0")
+          $("#imgId").attr('src', 'img/lay.png');
+        else if (predictions == "2")
+          $("#imgId").attr('src', 'img/down.png');
+        else if (predictions == "1")
+          $("#imgId").attr('src', 'img/up.png');
+        else if (predictions == "3")
+	  // initial finished
+          $("#imgId").attr('src', 'img/finished.jpg');
+        else if (predictions == "4")
+          // initialing
+          $("#imgId").attr('src', 'img/initial.jpg');
+        else if (predictions == '5')
+            // disconnected
+          $("#imgId").attr('src', 'img/initial.jpg');
+         
+
+        });
+
+        valueYawOneList.push(current_data_yaw_one);
+        valueYawTwoList.push(current_data_yaw_two);
+        valueRidarList.push(current_data_ridar);
+
+        // those data are only used in this function
+        data_current_yaw_one.push(now);
+        data_current_yaw_one.push(current_data_yaw_one);
+
+        data_current_yaw_two.push(now);
+        data_current_yaw_two.push(current_data_yaw_two);
+
+        data_current_ridar.push(now);
+        data_current_ridar.push(current_data_ridar);
+
+        // those data are final list
+        data_yaw_one.push(data_current_yaw_one);
+        data_yaw_two.push(data_current_yaw_two);
+        data_ridar.push(data_current_ridar);
+
+        if (shift) {
+            dateList.shift();
+
+            valueYawOneList.shift();
+            valueYawTwoList.shift();
+            valueRidarList.shift();
+
+            data_ridar.shift();
+            data_yaw_two.shift();
+            data_yaw_one.shift();
+        }
+
+    }
+
+    option = {
+
+        // Make gradient line here
+        visualMap: [{
+            show: false,
+            type: 'continuous',
+            seriesIndex: 0,
+            min: 0,
+            max: 400
+        }, {
+            show: false,
+            type: 'continuous',
+            seriesIndex: 1,
+            dimension: 0,
+            min: 0,
+            max: dateList.length - 1
+        }, {
+            show: false,
+            type: 'continuous',
+            seriesIndex: 2,
+            dimension: 0,
+            min: 0,
+            max: dateList.length - 1
+        }],
+
+
+        title: [{
+            left: 'center',
+            text: '背部倾斜角'
+        }, {
+            top: '33%',
+            left: 'center',
+            text: '腹部倾斜角'
+        }, {
+            top: '67%',
+            left: 'center',
+            text: '腹部离地高度'
+        }],
+        tooltip: {
+            trigger: 'axis'
+        },
+        xAxis: [{
+            data: dateList
+        }, {
+            data: dateList,
+            gridIndex: 1
+        }, {
+            data: dateList,
+            gridIndex: 2
+        }],
+        yAxis: [{
+            splitLine: {show: false}
+        }, {
+            splitLine: {show: false},
+            gridIndex: 1
+        }, {
+            splitLine: {show: false},
+            gridIndex: 2
+        }],
+        grid: [{x: '7%', y: '7%', width: '80%', height: '20%'},
+            {x: '7%', y: '40%', width: '80%', height: '20%'},
+            {x: '7%', y2: '7%', width: '80%', height: '20%'}
+      ],
+        series: [{
+            type: 'line',
+            showSymbol: false,
+            data: valueYawOneList
+        }, {
+            type: 'line',
+            showSymbol: false,
+            data: valueYawTwoList,
+            xAxisIndex: 1,
+            yAxisIndex: 1
+        }, {
+            type: 'line',
+            showSymbol: false,
+            data: valueRidarList,
+            xAxisIndex: 2,
+            yAxisIndex: 2
+        }]
+    };
+
+    var i = 0;
+    setInterval(function () {
+        if (i < 100){
+            addData();
+            i = i + 1;
+        }
+        else {
+            addData(true);
+        }
+        myChart.setOption(option);
+    }, 500);
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</html>

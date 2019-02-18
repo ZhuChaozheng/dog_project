@@ -12,11 +12,10 @@ def main():
   s = socket.socket()
 
   # host = 'server.blackant.org'
-#  host = 'server.blackant.org'
+  host = 'server.blackant.org'
 #  host = '180.109.138.23'
-  host = '127.0.0.1'
-#  port = 9999
-  port = 12343
+#   host = '127.0.0.1'
+  port = 10011
   try:
     s.connect((host, port))
     print('connected')
@@ -25,19 +24,20 @@ def main():
   # demo data
 #  r = ['00', '1e', '6c', '01', 'ea', '44', '00', 'e2', '6c',
 #  '01', '1e', '6c', '01', '1e', '6c', '00', '3e', '6c', '00', '7e', '0c']
-  r = ['00', '1e', '6c', '01', 'ea', '44', '00', 'e2', '6c']
+  r = ['00', '1e', '6c', '01', 'ea', '44', '00', 'e2', '6c', '6c', '01', 'ea', '44', '00', 'e2', '6c', '6c', '01', 'ea', '44', '00', 'e2', '6c']
   flag = 0
   while True:
         #print('ii', r)
         if (flag == 0):
-            r = ['00', '16', '61', '01', 'ea', '41', '00', 'e0', '6c']
+            r = ['01', 'ea', '41', '01', 'ea', '41', '01', 'ea', '41', '01', 'ea', '41', '01', 'ea', '41', '01', 'ea', '41', 'ea', '44', '01', 'ea', '41']
             flag = 1
             print('0')
         else:
             flag = 0
-            r = ['00', '1e', '6c', '01', 'ea', '44', '00', 'e2', '6c']
+            r = ['6c', '00', 'e0', '6c', '6c', '00', 'e0', '6c', '6c', '00', 'e0', '6c', '6c', '01', '6c', '00', 'e0', '6c', '6c', '01', 'e0', '6c', '6c']
             print('1')
 #        a = json.dumps(r).encode('utf-8')
+        r.append('p001')
         a = pickle.dumps(r)
         try:
             s.send(a)

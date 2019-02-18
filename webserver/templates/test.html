@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-2.0.3.js"></script>
+</head>
+<body>
+<button>提交</button>
+<script>
+$(window).load(function () {
+        alert('提交');
+        $.ajax({
+        url:'127.0.0.1',
+        type:"post",
+        data:{
+            count:'*&*****************************'
+        },
+        success:function (res) {
+            alert('成功');
+            console.log(res);
+        }
+    })
+})
+</script>
+</body>
+</html>
