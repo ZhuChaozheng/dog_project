@@ -1,0 +1,54 @@
+数据入库路径
+
+1.客户端发送数据新增自己的设备号
+r.append(equip_id)
+
+2.tcplink收到后将其传递,路径为:
+pickle_data -> sensors_data['equip_id'] -> all_sensors_data['equip_id'] ->
+web_sensors_data['equip_id']
+
+3.diff_web_sensors_data检测到数据更新,
+web_sensors_data -> last_web_sensors_data
+flag_database = 1
+
+4.mysql_server检测到flag为1:
+web_sensors_data -> dog_project.dog_tbl
+
+
+
+用户请求路径
+
+1.用户访问页面,输入设备号,getJSON访问相应地址
+case 1:
+    window.addr = '/htbin/count1.py';
+case 2:
+    window.addr = '/htbin/count2.py';
+case 3:
+    window.addr = '/htbin/count3.py';
+$.getJSON(window.addr, function(result){...}
+
+2.执行文件(count1,count2,count3),连接服务器,准备接收数据
+
+3.服务端监听到连接请求,开启weblink线程,循环发送数据库中最新一行记录
+    sql = "SELECT * FROM dog_tbl WHERE dt = (SELECT MAX(dt) FROM dog_tbl)"
+    while 1:
+        rows = cursor.execute(sql)
+        try:
+            a = pickle.dumps(rows[0])
+            c.send(a)
+        except EOFError:
+            print('eoferror')
+            c.close()
+            break
+
+4.count接收到记录,命中则退出循环关闭连接,不是自己的则继续接收
+    while 1:
+      if pickle_data['dog_name'] == 'p001':
+        pickle_data['predictions'] = str(pickle_data['predictions'])
+        jason = json.dumps(pickle_data)
+        print ("Content-type: application/json")
+        print()
+        print(jason)
+        break
+
+5.返回result到前端并展示
