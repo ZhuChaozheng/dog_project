@@ -132,5 +132,5 @@ s = socket.socket()
 ### 6 web端显示相关数据
 ![http://server.blackant.org:8000/](/README_img/web.png)
 
-##开发计划
+## 开发计划
 目前第一代警犬项目基本已经完工了，第二代正在建设中，详见<dogs_server_blackant_second_version.py>，如有建议，欢迎来反馈.
