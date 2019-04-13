@@ -1,10 +1,10 @@
-#DOG_PROJECT
+# DOG_PROJECT
 
 [README](README.md) | [中文文档](README_zh.md)
 
 DOG_project是一个内网穿透的高性能的警犬姿态识别应用，具有灵敏度高、识别度精确等特点。
 
-#目录
+# 目录
 
 <!-- vim-markdown-toc GFM -->
 
@@ -15,18 +15,18 @@ DOG_project是一个内网穿透的高性能的警犬姿态识别应用，具有
 
 <!-- vim-markdown-toc -->
 
-##开发状态
+## 开发状态
 
 目前第一代警犬项目基本已经完工，您可以在最新版本中试用它。
 
 第二代警犬项目目前正在开发当中，敬请期待。
 
-##架构
+## 架构
 
 ![architecture](/README_img/const.png)
 
-##功能说明
-###1 服务端接受客户端数据（姿态、影像等）并判断姿态
+## 功能说明
+### 1 服务端接受客户端数据（姿态、影像等）并判断姿态
 *接受数据*
 ```
  t2 = threading.Thread(target=tcp_server)
@@ -56,7 +56,7 @@ predictions_decision_tree(sensor_data, velocity)
 
 
 
-###2 数据库线程将新值写入数据库
+### 2 数据库线程将新值写入数据库
 
 
 ```
@@ -67,7 +67,7 @@ def mysql_server():
 	 db.commit()
 ```
 
-###3 服务端接收到web端请求后，将数据库最新一条数据发送
+### 3 服务端接收到web端请求后，将数据库最新一条数据发送
 
 ```
 def tcp_server():
@@ -79,7 +79,7 @@ def tcp_server():
 		t.start()
 ```
 
-###4 模拟数据请求
+### 4 模拟数据请求
 在客户端未开启状态下发送模拟数据给服务端
 
 ```
@@ -112,7 +112,7 @@ while True:
         time.sleep(1)    
 ```
 
-###5 客户端从串口读取数据并发送给服务端
+### 5 客户端从串口读取数据并发送给服务端
 ```
   x = serial.Serial('/dev/ttyUSB0', 115200)
 ```
@@ -129,7 +129,7 @@ s = socket.socket()
  a = pickle.dumps(r)
             s.send(a)
 ```
-###6 web端显示相关数据
+### 6 web端显示相关数据
 ![http://server.blackant.org:8000/](/README_img/web.png)
 
 ##开发计划
