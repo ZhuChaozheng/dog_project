@@ -1,8 +1,8 @@
-# DOG_PROJECT
+# dog_project
 
 [README](README.md) | [中文文档](README_zh.md)
 
-DOG_project是一个内网穿透的高性能的警犬姿态识别应用，具有灵敏度高、识别度精确等特点。
+dog_project是一个内网穿透的高性能的警犬姿态识别应用，具有灵敏度高、识别度精确等特点。
 
 # 目录
 
