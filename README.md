@@ -23,7 +23,7 @@ DOG_project是一个内网穿透的高性能的警犬姿态识别应用，具有
 
 ##架构
 
-![architecture](/README_img/concst.png)
+![architecture](/README_img/const.png)
 
 ##功能说明
 ###1 服务端接受客户端数据（姿态、影像等）并判断姿态
