@@ -11,6 +11,7 @@ dog_project是一个内网穿透的高性能的警犬姿态识别应用，具有
 * [开发状态](#开发状态)
 * [架构](#架构)
 * [功能说明](#功能说明)
+* [注意事项](#注意事项)
 * [开发计划](#开发计划)
 
 <!-- vim-markdown-toc -->
@@ -132,5 +133,15 @@ s = socket.socket()
 ### 6 web端显示相关数据
 ![http://server.blackant.org:8000/](/README_img/web.png)
 
+## 注意事项
+我们所使用的数据网关的id以及密码如下
+```
+ssid=HUAWEI-5F42
+psk=34127615
+```
+当然，熟悉Linux环境的您也可以通过以下命令查看配置文件并修改我们预设配置
+```
+sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
+```
 ## 开发计划
 目前第一代警犬项目基本已经完工了，第二代正在建设中，详见<dogs_server_blackant_second_version.py>，如有建议，欢迎来反馈.
