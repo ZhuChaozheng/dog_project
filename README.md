@@ -12,6 +12,7 @@ dog_project是一个内网穿透的高性能的警犬姿态识别应用，具有
 * [架构](#架构)
 * [功能说明](#功能说明)
 * [注意事项](#注意事项)
+* [资料下载](#资料下载)
 * [开发计划](#开发计划)
 
 <!-- vim-markdown-toc -->
@@ -143,5 +144,12 @@ psk=34127615
 ```
 sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
 ```
+## 资料下载
+目前我们的系统镜像托管于百度云盘
+```
+链接：https://pan.baidu.com/s/1mKjUmRVHnB2NxapOAziL0A 
+提取码：rrdn 
+```
 ## 开发计划
 目前第一代警犬项目基本已经完工了，第二代正在建设中，详见<dogs_server_blackant_second_version.py>，如有建议，欢迎来反馈.
+
