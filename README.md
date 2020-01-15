@@ -3,7 +3,12 @@
 [README](README.md) | [中文文档](README_zh.md)
 
 dog_project是一个内网穿透的高性能的警犬姿态识别应用，具有灵敏度高、识别度精确等特点。
-
+<video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
+      <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+      <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
+      <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg">
+      <p>Your user agent does not support the HTML5 Video element.</p>
+</video>
 <iframe src="//player.bilibili.com/player.html?aid=34108348&cid=80990288&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 # 目录
