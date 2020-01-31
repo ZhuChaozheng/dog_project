@@ -5,6 +5,7 @@
 dog_project是一个内网穿透的高性能的警犬姿态识别应用，具有灵敏度高、识别度精确等特点。
 
 [![Video](README_img/dog_project_cover.gif)](https://www.bilibili.com/video/av34108348?share_medium=android&share_source=copy_link&bbid=452131F3-C84D-4DF0-89AF-AA0107CE68FF16810infoc&ts=1539869227641)
+
 # 目录
 
 <!-- vim-markdown-toc GFM -->

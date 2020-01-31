@@ -1,5 +1,6 @@
-Dog_project
-===========
+# dog_project
+
+[README](README.md) | [中文文档](README_zh.md)
 
 The full name of this project is called Real-time reconstruction and simulation of Police dog pose based on multi-sensor data vest. It has the characteristics of comfortable to wear, excellent real-time, high reliability, high precision,and supporting 4G network. When the 4G network environment is stable, the delay of the system is less than 1s. The system is based on the multi-sensor network to detect and reconstruct the dog's pose, which can reflect the dog's current pose information in the real-time and high precision. For the anti-terrorism investigation and explosion, it can further reduce the risks of tasks by using the dog's mobility.
 
@@ -25,10 +26,9 @@ Contents
 
 * [Appendix](#jump_9)
 
+# <span id="jump_1">Video</span>
 
-<span id="jump_1">[Video](https://www.bilibili.com/video/av34108348)</span>
-===========
-![README_img/dog_project_cover.gif]
+[![Video](README_img/dog_project_cover.gif)](https://www.bilibili.com/video/av34108348?share_medium=android&share_source=copy_link&bbid=452131F3-C84D-4DF0-89AF-AA0107CE68FF16810infoc&ts=1539869227641)
 
 <span id="jump_2">Environment</span>
 ===========
@@ -37,17 +37,17 @@ Contents
 
 >Software: Ubuntu system, Nginx server, lighttpd server, python3
 
-<span id="jump_3">system architecture</span>
+<span id="jump_3">System Architecture</span>
 ===================
 
-There are camera and IMU sensors in the data vest which can conveniently collect video from the fpv (first person vision) and acceleration, angular velocity of the dog body. Then, raspberry(client) as a middleware sends the collected dog's data of pose and video to the remote server (specifically, our domain:server.blackant.org).Nginx server is used for playing RTMP video stream, and lighttpd server simultaneously analyses the trust pose based on the trained knowledges and displays the dog's pose and data on popular browser (Firefox,Safari and etc.).
+There are camera and IMU sensors in the data vest which can conveniently collect video from the fpv (first person vision) and acceleration, angular velocity of the dog body. Raspberry(client) then as a middleware sends the collected dog's data of pose and video to the remote server (specifically, our domain:server.blackant.org). Nginx server is used for playing RTMP video stream, and lighttpd server simultaneously analyses the trust pose based on the trained knowledges and displays the dog's pose and data on popular browser (Firefox,Safari and etc.).
 
-![README_img/const.png]
+![Missing illustration](/README_img/const.png)
 
 <span id="jump_4">Clone project</span>
 =============
 
-git clone: <https://github.com/ZhuChaozheng/dog_project.git>
+``git clone: <https://github.com/ZhuChaozheng/dog_project.git>``
 
 <span id="jump_5">Build system</span>
 ============
@@ -55,50 +55,52 @@ git clone: <https://github.com/ZhuChaozheng/dog_project.git>
  server
 -------
 
-(1)get into folder and move backend and web services to /var/www/html
+**(1) get into folder and move back end and web services to /var/www/html**
 
->>   `cd dog_project && mv /html/ /var/www/html`
+``cd dog_project && mv /html/ /var/www/html``
 
-(2)builde nginx server and lighttpd server, provide video and web services respectively
+**(2) build nginx server and lighttpd server, provide video and web services respectively**
 
->>   download nginx
+download nginx
 
->>   `sudo apt-get install nginx`
+``sudo apt-get install nginx``
 
->>   get into project folder,mv nginx.confto /etc/nginx/
+get into project folder,mv nginx.confto /etc/nginx/
 
->>   `mv ./nginx.conf /etc/nginx`
+``mv ./nginx.conf /etc/nginx``
 
->>   run nginx server
+run nginx server
 
->>   `sudo /etc/init.d/nginx start`
+``sudo /etc/init.d/nginx start``
 
->>   download lighttpd
+download lighttpd
 
->>   `apt-get install lighttpd`
+``apt-get install lighttpd``
 
->>   run lighttpd
+run lighttpd
 
->>   `./lighttpd -f ../config/lighttpd.conf`
+``./lighttpd -f ../config/lighttpd.conf``
 
  client（raspberry）
 --------------------
 
->>run client file
+run client file
 
->>`python3 dogs_client_raspberry.py`
+``python3 dogs_client_raspberry.py``
 
->>run run_video.sh, streaming video
+run run_video.sh, streaming video
 
->>`./ run_video.sh`
+`./ run_video.sh`
 
-<span id="jump_6">[System display](http://server.blackant.org:8000)</span>
+<span id="jump_6">System display</span>
 =======
 
-![README_img/web.gif]
+[![](README_img/web.gif)]((http://server.blackant.org:8000))
 
 <span id="jump_7">Roadmap</span>
 =======
+
+*Waiting…*
 
 <span id="jump_8">Attention</span>
 =========
