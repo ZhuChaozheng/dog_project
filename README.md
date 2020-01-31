@@ -28,7 +28,7 @@ Contents
 
 # <span id="jump_1">Video</span>
 
-[![Video](README_img/dog_project_cover.gif)](https://www.bilibili.com/video/av34108348?share_medium=android&share_source=copy_link&bbid=452131F3-C84D-4DF0-89AF-AA0107CE68FF16810infoc&ts=1539869227641)
+[![Video](doc/pic/dog_project_cover.gif)](https://www.bilibili.com/video/av34108348?share_medium=android&share_source=copy_link&bbid=452131F3-C84D-4DF0-89AF-AA0107CE68FF16810infoc&ts=1539869227641)
 
 <span id="jump_2">Environment</span>
 ===========
@@ -42,7 +42,7 @@ Contents
 
 There are camera and IMU sensors in the data vest which can conveniently collect video from the fpv (first person vision) and acceleration, angular velocity of the dog body. Raspberry(client) then as a middleware sends the collected dog's data of pose and video to the remote server (specifically, our domain:server.blackant.org). Nginx server is used for playing RTMP video stream, and lighttpd server simultaneously analyses the trust pose based on the trained knowledges and displays the dog's pose and data on popular browser (Firefox,Safari and etc.).
 
-![Missing illustration](/README_img/const.png)
+![Missing illustration](doc/pic/const.png)
 
 <span id="jump_4">Clone project</span>
 =============
@@ -95,7 +95,7 @@ run run_video.sh, streaming video
 <span id="jump_6">System display</span>
 =======
 
-[![](README_img/web.gif)](http://server.blackant.org:8000)
+[![](doc/pic/web.gif)](http://server.blackant.org:8000)
 
 <span id="jump_7">Roadmap</span>
 =======
