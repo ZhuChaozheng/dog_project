@@ -95,7 +95,7 @@ run run_video.sh, streaming video
 <span id="jump_6">System display</span>
 =======
 
-[![](README_img/web.gif)]((http://server.blackant.org:8000))
+[![](README_img/web.gif)](http://server.blackant.org:8000)
 
 <span id="jump_7">Roadmap</span>
 =======
