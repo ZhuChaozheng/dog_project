@@ -47,7 +47,7 @@ There are camera and IMU sensors in the data vest which can conveniently collect
 <span id="jump_4">Clone project</span>
 =============
 
-``git clone: <https://github.com/ZhuChaozheng/dog_project.git>``
+``git clone https://github.com/ZhuChaozheng/dog_project.git``
 
 <span id="jump_5">Build system</span>
 ============
