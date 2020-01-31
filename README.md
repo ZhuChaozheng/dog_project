@@ -1,108 +1,126 @@
-# dog_project
+Dog_project
+===========
 
-[README](README.md) | [中文文档](README_zh.md)
+The full name of this project is called Real-time reconstruction and simulation of Police dog pose based on multi-sensor data vest. It has the characteristics of comfortable to wear, excellent real-time, high reliability, high precision,and supporting 4G network. When the 4G network environment is stable, the delay of the system is less than 1s. The system is based on the multi-sensor network to detect and reconstruct the dog's pose, which can reflect the dog's current pose information in the real-time and high precision. For the anti-terrorism investigation and explosion, it can further reduce the risks of tasks by using the dog's mobility.
 
-dog_project是一个内网穿透的高性能的警犬姿态识别应用，具有灵敏度高、识别度精确等特点。
+Contents
+========
 
-[![Video](README_img/dog_project_cover.gif)](https://www.bilibili.com/video/av34108348?share_medium=android&share_source=copy_link&bbid=452131F3-C84D-4DF0-89AF-AA0107CE68FF16810infoc&ts=1539869227641)
-# 目录
 
-<!-- vim-markdown-toc GFM -->
+* [Video](#jump_1)
 
-* [部署步骤](#部署步骤)
-* [注意事项](#注意事项)
-* [资料下载](#资料下载)
-* [开发计划](#开发计划)
+* [Environment](#jump_2)
 
-<!-- vim-markdown-toc -->
-## 部署步骤
+* [System architecture](#jump_3)
 
-警犬背心的部署分为两个部分：
+* [Clone project](#jump_4)
 
-* [服务端](#服务端)
-* [客户端](#客户端)
+* [Build system](#jump_5)
 
-### 服务端
+* [System display](#jump_6)
 
-(1) 克隆项目
+* [Roadmap](#jump_7)
 
-```
-git clone https://github.com/ZhuChaozheng/dog_project.git
-```
+* [Attention](#jump_8)
 
-(2) 进入文件夹并移动后端和网页服务至/var/www/html
+* [Appendix](#jump_9)
 
-```
-cd dog_project && mv /html/ /var/www/html
-```
 
-(3)搭建nginx服务器和lighttpd服务器分别提供视频和web服务
+<span id="jump_1">[Video](https://www.bilibili.com/video/av34108348)</span>
+===========
+![README_img/dog_project_cover.gif]
 
-下载nginx
+<span id="jump_2">Environment</span>
+===========
 
-```
-sudo apt-get install nginx
-```
+>Hardware: a raspberry pi 3B +, two IMU sensors, a mobile power, a police dog vest
 
-将进入工程文件夹将nginx.conf移到/etc/nginx/下
+>Software: Ubuntu system, Nginx server, lighttpd server, python3
 
-```
-mv ./nginx.conf /etc/nginx
-```
+<span id="jump_3">system architecture</span>
+===================
 
-启动nginx服务器
+There are camera and IMU sensors in the data vest which can conveniently collect video from the fpv (first person vision) and acceleration, angular velocity of the dog body. Then, raspberry(client) as a middleware sends the collected dog's data of pose and video to the remote server (specifically, our domain:server.blackant.org).Nginx server is used for playing RTMP video stream, and lighttpd server simultaneously analyses the trust pose based on the trained knowledges and displays the dog's pose and data on popular browser (Firefox,Safari and etc.).
 
-```
-sudo /etc/init.d/nginx start
-```
+![README_img/const.png]
 
-下载lighttpd
+<span id="jump_4">Clone project</span>
+=============
 
-```
-apt-get install lighttpd
-```
+git clone: <https://github.com/ZhuChaozheng/dog_project.git>
 
-启动lighttpd
+<span id="jump_5">Build system</span>
+============
 
-```
-./lighttpd -f ../config/lighttpd.conf
-```
+ server
+-------
 
-(4) 启动服务端数据接收
+(1)get into folder and move backend and web services to /var/www/html
 
-```
-python3 dogs_server_blackant.py
-```
+>>   `cd dog_project && mv /html/ /var/www/html`
 
-### 客户端(树莓派)
+(2)builde nginx server and lighttpd server, provide video and web services respectively
 
-运行树莓派客户端文件
+>>   download nginx
 
-```
-python3 dogs_client_raspberry.py
-```
+>>   `sudo apt-get install nginx`
 
-运行run_video.sh推流视频
-```
-./run_video.sh
-```
+>>   get into project folder,mv nginx.confto /etc/nginx/
 
-## 注意事项
-我们所使用的数据网关的id以及密码如下
-```
-ssid=HUAWEI-5F42
-psk=34127615
-```
-当然，熟悉Linux环境的您也可以通过以下命令查看配置文件并修改我们预设配置
-```
-sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
-```
-## 资料下载
-目前我们的系统镜像托管于百度云盘
-```
-链接：https://pan.baidu.com/s/1mKjUmRVHnB2NxapOAziL0A 
-提取码：rrdn 
-```
-## 开发计划
-目前第一代警犬项目基本已经完工了，第二代正在建设中，详见<dogs_server_blackant_second_version.py>，如有建议，欢迎来反馈.
+>>   `mv ./nginx.conf /etc/nginx`
 
+>>   run nginx server
+
+>>   `sudo /etc/init.d/nginx start`
+
+>>   download lighttpd
+
+>>   `apt-get install lighttpd`
+
+>>   run lighttpd
+
+>>   `./lighttpd -f ../config/lighttpd.conf`
+
+ client（raspberry）
+--------------------
+
+>>run client file
+
+>>`python3 dogs_client_raspberry.py`
+
+>>run run_video.sh, streaming video
+
+>>`./ run_video.sh`
+
+<span id="jump_6">[System display](http://server.blackant.org:8000)</span>
+=======
+
+![README_img/web.gif]
+
+<span id="jump_7">Roadmap</span>
+=======
+
+<span id="jump_8">Attention</span>
+=========
+
+1.  The browser should turn on the flash plug-in to see the video stream
+
+2.  The ID and password of the data gateway we used are as follows:
+
+>   ssid=HUAWEI-5F42
+
+>   psk=34127615
+
+Of course, you can also modify the configuration of network if you are familiar
+with the command of Linux:
+
+`sudo vi /etc/wpa_supplicant/wpa_supplicant.conf`
+
+<span id="jump_9">Appendix</span>
+========
+
+Our system image of Raspberry is in the care of BaiduNetdisk.
+
+>Link: https://pan.baidu.com/s/1mKjUmRVHnB2NxapOAziL0A
+
+>Extraction code: rrdn
