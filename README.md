@@ -42,7 +42,7 @@ Contents
 
 There are camera and IMU sensors in the data vest which can conveniently collect video from the fpv (first person vision) and acceleration, angular velocity of the dog body. Raspberry(client) then as a middleware sends the collected dog's data of pose and video to the remote server (specifically, our domain:server.blackant.org). Nginx server is used for playing RTMP video stream, and lighttpd server simultaneously analyses the trust pose based on the trained knowledges and displays the dog's pose and data on popular browser (Firefox,Safari and etc.).
 
-![Missing illustration](doc/pic/const.png)
+![architecture illustration](doc/pic/arch_illustration.pdf)
 
 <span id="jump_4">Clone project</span>
 =============
