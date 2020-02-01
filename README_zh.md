@@ -1,109 +1,129 @@
-# dog_project
+dog_project
+===========
 
 [README](README.md) | [中文文档](README_zh.md)
 
-dog_project是一个内网穿透的高性能的警犬姿态识别应用，具有灵敏度高、识别度精确等特点。
+基于多传感器数据背心的警犬位姿实时重建与仿真，具有易穿戴、实时性好、高可靠性、高精度、支持4G网络等特点。在4G网络环境稳定的情况下，系统时延小于1s。系统基于多传感器网络的警犬姿态检测与重建，能够实时高精度反映警犬在反恐搜爆实战中的当前姿态信息，从而在远距离指挥当中更大效率地利用警犬的机动性、高准确性，从而进一步降低安全隐患。
 
-[![Video](doc/pic/dog_project_cover.gif)](https://www.bilibili.com/video/av34108348?share_medium=android&share_source=copy_link&bbid=452131F3-C84D-4DF0-89AF-AA0107CE68FF16810infoc&ts=1539869227641)
+目录
+========
 
-# 目录
 
-<!-- vim-markdown-toc GFM -->
+* [视频演示](#jump_1)
 
-* [部署步骤](#部署步骤)
-* [注意事项](#注意事项)
-* [资料下载](#资料下载)
-* [开发计划](#开发计划)
+* [项目环境](#jump_2)
 
-<!-- vim-markdown-toc -->
-## 部署步骤
+* [系统架构](#jump_3)
 
-警犬背心的部署分为两个部分：
+* [克隆项目](#jump_4)
 
-* [服务端](#服务端)
-* [客户端](#客户端)
+* [系统搭建](#jump_5)
 
-### 服务端
+* [系统展示](#jump_6)
 
-(1) 克隆项目
+* [未来规划](#jump_7)
 
-```
-git clone https://github.com/ZhuChaozheng/dog_project.git
-```
+* [注意事项](#jump_8)
 
-(2) 进入文件夹并移动后端和网页服务至/var/www/html
+* [附录](#jump_9)
 
-```
-cd dog_project && mv /html/ /var/www/html
-```
 
-(3)搭建nginx服务器和lighttpd服务器分别提供视频和web服务
+视频演示
+===========
 
-下载nginx
+<span id="jump_1">[![](doc/pic/dog_project_cover.gif)](https://www.bilibili.com/video/av34108348)</span>
 
-```
-sudo apt-get install nginx
-```
+<span id="jump_2">项目环境</span>
+===========
 
-将进入工程文件夹将nginx.conf移到/etc/nginx/下
+> 硬件：1个树莓派3B+、2个IMU传感器、一个充电宝、警犬马甲
 
-```
-mv ./nginx.conf /etc/nginx
-```
+> 软件：Ubuntu系统、nginx服务器、lighttpd服务器、python3
 
-启动nginx服务器
+<span id="jump_3">系统架构</span>
+===================
 
-```
-sudo /etc/init.d/nginx start
-```
+数据背心内装有摄像头和 imu 传感器，可以方便地收集到狗身体的第一人称视觉(fpv)视频和的加速度、角速度数据。 然后，树莓派 (客户端)作为中间件将收集到的狗的姿态和视频数据发送到远程服务器(域名:  server.blackant.org )。 Nginx 服务器用于播放 rtmp 视频流，lighttpd 服务器根据训练后的知识同时分析信任姿态，并在流行的浏览器(例如firefox、 safari 等)上显示狗的姿态和数据。
 
-下载lighttpd
+![](doc/pic/arch_illustration.gif)
 
-```
-apt-get install lighttpd
-```
+<span id="jump_4">克隆项目</span>
+=============
 
-启动lighttpd
+`git clone: https://github.com/ZhuChaozheng/dog_project.git`
 
-```
-./lighttpd -f ../config/lighttpd.conf
-```
+<span id="jump_5">系统搭建</span>
+============
 
-(4) 启动服务端数据接收
+ 服务器
+-------
 
-```
-python3 dogs_server_blackant.py
-```
+1. 进入文件夹并移动后端和网页服务至/var/www/html
 
-### 客户端(树莓派)
+   `cd dog_project && mv /html/ /var/www/html`
+
+2. 搭建nginx服务器和lighttpd服务器分别提供视频和web服务
+
+   下载nginx
+
+   `sudo apt-get install nginx`
+
+​		将进入工程文件夹将nginx.conf移到/etc/nginx/下
+
+​		`mv ./nginx.conf /etc/nginx`
+
+​		启动nginx服务器
+
+​		`sudo /etc/init.d/nginx start`
+
+​		下载lighttpd
+
+​		`apt-get install lighttpd`
+
+​		启动lighttpd
+
+​		`./lighttpd -f ../config/lighttpd.conf`
+
+客户端（树莓派）
+--------------------
 
 运行树莓派客户端文件
 
-```
-python3 dogs_client_raspberry.py
-```
+`python3 dogs_client_raspberry.py`
 
 运行run_video.sh推流视频
-```
-./run_video.sh
-```
 
-## 注意事项
-我们所使用的数据网关的id以及密码如下
-```
-ssid=HUAWEI-5F42
-psk=34127615
-```
-当然，熟悉Linux环境的您也可以通过以下命令查看配置文件并修改我们预设配置
-```
-sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
-```
-## 资料下载
+`./ run_video.sh`
+
+系统展示
+=======
+
+<span id="jump_6">[![](doc/pic/web.gif)](http://server.blackant.org:8000)</span>
+
+<span id="jump_7">未来规划</span>
+=======
+
+待更新。。。
+
+<span id="jump_8">注意事项</span>
+=========
+
+1. 浏览器需要先开启flash才能看到视频流
+
+2. 我们所使用的数据网关的id以及密码如下：
+
+   - ssid=HUAWEI-5F42
+   - psk=34127615
+
+3. 修改配置
+
+   `sudo vi /etc/wpa_supplicant/wpa_supplicant.conf`
+
+<span id="jump_9">附录</span>
+========
+
 目前我们的系统镜像托管于百度云盘
-```
-链接：https://pan.baidu.com/s/1mKjUmRVHnB2NxapOAziL0A 
-提取码：rrdn 
-```
-## 开发计划
-目前第一代警犬项目基本已经完工了，第二代正在建设中，详见<dogs_server_blackant_second_version.py>，如有建议，欢迎来反馈.
 
+链接：https://pan.baidu.com/s/1mKjUmRVHnB2NxapOAziL0A
+
+提取码：rrdn
