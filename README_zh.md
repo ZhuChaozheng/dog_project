@@ -31,7 +31,7 @@ dog_project
 视频演示
 ===========
 
-<span id="jump_1">[![](doc/pic/dog_project_cover.gif)](https://www.bilibili.com/video/av34108348)</span>
+<span id="jump_1">[![](doc/pic/dog_project_cover.gif)](https://youtu.be/jjddJISvFiA)</span>
 
 <span id="jump_2">项目环境</span>
 ===========
